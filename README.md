@@ -51,7 +51,19 @@ La page HTML est embarquée dans Streamlit de façon autonome. Les petits assets
 
 ## Déploiement et QR code
 
-Pour obtenir un lien public :
+URL publique Streamlit :
+
+```text
+https://lcb-ft-country-list.streamlit.app/
+```
+
+QR code prêt à intégrer dans une présentation :
+
+```text
+Référentiel pays/public/assets/qr-streamlit-app.png
+```
+
+Pour redéployer ou générer un nouveau lien public :
 
 1. Déployer ce dépôt sur Streamlit Community Cloud.
 2. Sélectionner `streamlit_app.py` comme fichier principal.
