@@ -36,6 +36,28 @@ Sur Windows, il est aussi possible d'utiliser :
 
 ou de lancer `start_training_catalog.cmd`.
 
+## Lancer avec Streamlit
+
+Le dépôt contient aussi une version Streamlit destinée au partage par URL publique, puis QR code.
+
+Depuis la racine du dépôt :
+
+```powershell
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+La page HTML est embarquée dans Streamlit de façon autonome. Les petits assets PNG de contact sont intégrés directement dans l'iframe Streamlit.
+
+## Déploiement et QR code
+
+Pour obtenir un lien public :
+
+1. Déployer ce dépôt sur Streamlit Community Cloud.
+2. Sélectionner `streamlit_app.py` comme fichier principal.
+3. Copier l'URL publique générée par Streamlit.
+4. Générer le QR code à partir de cette URL et l'intégrer dans la présentation.
+
 ## Fonctionnalités
 
 - Tableau filtrable par pays, liste ou effet.

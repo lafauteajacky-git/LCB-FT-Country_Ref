@@ -1,4 +1,6 @@
 _backups/
+__pycache__/
+*.py[cod]
 
 Référentiel pays/videos/capture-*/
 Référentiel pays/videos/*.webm
