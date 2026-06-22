@@ -13,7 +13,7 @@
       --panel-soft: #F6F7F8;
       --ink: #2C3446;
       --ink-2: #39506C;
-      --muted: #7C8492;
+      --muted: #5F6876;
       --line: #E7E6E6;
       --line-2: #F0F0F0;
       --primary: #39506C;
@@ -56,6 +56,36 @@
     button, input { font: inherit; }
     button { cursor: pointer; border: 0; }
     :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 999;
+      transform: translateY(-160%);
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--primary-dk);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
 
     .app { display: flex; min-height: 100vh; }
 
@@ -106,7 +136,7 @@
 
     .brand-sub {
       margin-top: 4px;
-      color: rgba(255,255,255,.66);
+      color: rgba(255,255,255,.80);
       font-size: 10.5px;
       letter-spacing: .04em;
     }
@@ -115,28 +145,33 @@
 
     .nav-label {
       margin: 0 0 8px 8px;
-      color: rgba(255,255,255,.54);
+      color: rgba(255,255,255,.78);
       font-size: 10.5px;
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
     }
 
-    .nav a {
+    .nav a,
+    .nav button {
       display: flex;
       align-items: center;
       gap: 9px;
+      width: 100%;
       padding: 7px 10px;
       border-left: 2px solid transparent;
       border-radius: 8px;
+      background: transparent;
       color: rgba(255,255,255,.84);
       font-size: 13.5px;
       text-decoration: none;
+      text-align: left;
       transition: background .12s, border-color .12s, color .12s;
     }
 
     .nav a:hover,
-    .nav a.active {
+    .nav a.active,
+    .nav button:hover {
       background: rgba(255,255,255,.10);
       color: #fff;
       border-left-color: var(--gold);
@@ -150,7 +185,7 @@
       margin-top: 26px;
       padding-top: 16px;
       border-top: 1px solid rgba(255,255,255,.14);
-      color: rgba(255,255,255,.66);
+      color: rgba(255,255,255,.80);
       font-size: 11px;
     }
 
@@ -573,6 +608,17 @@
       100% { transform: translateX(65%); opacity: .72; }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
     .section-head {
       display: flex;
       align-items: end;
@@ -858,6 +904,13 @@
       font-size: 12px;
     }
 
+    caption {
+      padding: 12px 24px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: left;
+    }
+
     thead th {
       position: sticky;
       top: 0;
@@ -883,7 +936,13 @@
     tbody tr { cursor: pointer; transition: background .12s; }
     tbody tr:nth-child(even) { background: var(--panel-soft); }
     tbody tr:hover,
-    tbody tr.active { background: var(--gold-soft); }
+    tbody tr.active,
+    tbody tr:focus-within { background: var(--gold-soft); }
+
+    tbody tr[tabindex]:focus {
+      outline: 3px solid var(--gold);
+      outline-offset: -3px;
+    }
 
     th.select-col,
     td.select-col {
@@ -1257,8 +1316,9 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
   <div class="app">
-    <aside class="sidebar">
+    <aside class="sidebar" aria-label="Navigation principale">
       <div class="brand">
         <div class="brand-deco"></div>
         <div class="wordmark">Auria Advisory</div>
@@ -1268,7 +1328,7 @@
 
       <div class="nav-group">
         <p class="nav-label">Navigation</p>
-        <nav class="nav">
+        <nav class="nav" aria-label="Navigation dans la page">
           <a class="active" href="#accueil"><span class="ico">01</span> Accueil</a>
           <a href="#lecture"><span class="ico">02</span> Cadre d'analyse</a>
           <a href="#sources-donnees"><span class="ico">03</span> Sources</a>
@@ -1279,9 +1339,9 @@
 
       <div class="nav-group">
         <p class="nav-label">Exports</p>
-        <nav class="nav">
-          <a href="#" id="navExportCsv"><span class="ico">CSV</span> Exporter CSV</a>
-          <a href="#" id="navExportJson"><span class="ico">JS</span> Exporter JSON</a>
+        <nav class="nav" aria-label="Exports du référentiel">
+          <button type="button" id="navExportCsv"><span class="ico" aria-hidden="true">CSV</span> Exporter CSV</button>
+          <button type="button" id="navExportJson"><span class="ico" aria-hidden="true">JS</span> Exporter JSON</button>
         </nav>
       </div>
 
@@ -1289,11 +1349,11 @@
         <div class="tagline">Consulting That Makes Sense</div>
         <b>Contactez-nous</b>
         <div class="contact-links" aria-label="Coordonnees Auria Advisory">
-          <a href="https://auria-advisory.fr/" target="_blank" rel="noreferrer">
+          <a href="https://auria-advisory.fr/" target="_blank" rel="noreferrer" aria-label="Site internet Auria Advisory, nouvelle fenêtre">
             <img src="assets/contact-web.png" alt="" aria-hidden="true">
             <span class="contact-text">Site internet <span class="contact-type">Web</span></span>
           </a>
-          <a href="https://www.linkedin.com/company/auria-advisory/" target="_blank" rel="noreferrer">
+          <a href="https://www.linkedin.com/company/auria-advisory/" target="_blank" rel="noreferrer" aria-label="Page LinkedIn Auria Advisory, nouvelle fenêtre">
             <img src="assets/contact-linkedin.png" alt="" aria-hidden="true">
             <span class="contact-text">Page LinkedIn <span class="contact-type">In</span></span>
           </a>
@@ -1305,7 +1365,7 @@
       </div>
     </aside>
 
-    <main class="main">
+    <main class="main" id="contenu-principal" tabindex="-1">
       <section class="card pad" id="accueil">
         <div class="hero-grid">
           <div>
@@ -1360,7 +1420,7 @@
           <div class="refresh-panel" id="refreshPanel">
             <div class="refresh-panel-top">
               <div>
-                <div class="refresh-meta" id="refreshStatus">Derniere actualisation -</div>
+                <div class="refresh-meta" id="refreshStatus" aria-live="polite">Derniere actualisation -</div>
                 <div class="sub">Simulation de synchronisation des sources</div>
               </div>
               <button class="btn primary" id="refreshData" type="button">Actualiser</button>
@@ -1397,7 +1457,7 @@
           <article class="source-tile">
             <h3>ETNC FR</h3>
             <p>Liste fiscale française des Etats et territoires non cooperatifs, utile pour croiser exposition LCB-FT et effets fiscaux.</p>
-          <span class="source-date" id="sourceDateEtnc">Date source -</span>
+            <span class="source-date" id="sourceDateEtnc">Date source -</span>
             <span class="source-frequency">Frequence : non fixe dans cette version ; actualisation par arrete français a surveiller.</span>
           </article>
         </div>
@@ -1413,19 +1473,20 @@
                   <h2><span class="num">04</span> Referentiel interactif</h2>
                   <div class="table-subtitle">Table pays consolidee, enrichie d'une lecture operationnelle pour les equipes conformite.</div>
                 </div>
-                <div class="toolbar-note" id="toolbarNote">0 pays affiches</div>
+                <div class="toolbar-note" id="toolbarNote" aria-live="polite">0 pays affiches</div>
               </div>
 
               <div class="filters">
                 <div class="search-row">
                   <label class="searchbox">
+                    <span class="visually-hidden">Rechercher dans le référentiel pays</span>
                     <input id="searchInput" type="search" placeholder="Rechercher un pays, une liste ou un effet..." autocomplete="off">
                   </label>
-                  <button class="btn" id="toggleMulti" type="button">>= 3 listes</button>
+                  <button class="btn" id="toggleMulti" type="button" aria-pressed="false">>= 3 listes</button>
                 </div>
-                <div class="filter-pills" id="filterPills"></div>
+                <div class="filter-pills" id="filterPills" role="group" aria-label="Filtrer par source"></div>
                 <div class="selection-tools">
-                  <div class="selection-status" id="selectionStatus">0 pays selectionne</div>
+                  <div class="selection-status" id="selectionStatus" aria-live="polite">0 pays selectionne</div>
                   <div class="selection-actions">
                     <button class="btn primary" id="exportSelectionPdf" type="button" disabled>Exporter la selection PDF</button>
                     <button class="btn" id="clearSelection" type="button" disabled>Effacer la selection</button>
@@ -1436,16 +1497,17 @@
 
             <div class="table-wrap">
               <table>
+                <caption>Référentiel pays LCB-FT filtrable par source et niveau d'exposition.</caption>
                 <thead>
                   <tr>
-                    <th class="select-col">PDF</th>
-                    <th>#</th>
-                    <th class="country-col">Pays</th>
-                    <th class="list-col">GAFI</th>
-                    <th class="list-col">PTHR UE</th>
-                    <th class="list-col">Sanctions</th>
-                    <th class="list-col">Tax UE</th>
-                    <th class="list-col">ETNC FR</th>
+                    <th class="select-col" scope="col">PDF</th>
+                    <th scope="col">#</th>
+                    <th class="country-col" scope="col">Pays</th>
+                    <th class="list-col" scope="col">GAFI</th>
+                    <th class="list-col" scope="col">PTHR UE</th>
+                    <th class="list-col" scope="col">Sanctions</th>
+                    <th class="list-col" scope="col">Tax UE</th>
+                    <th class="list-col" scope="col">ETNC FR</th>
                   </tr>
                 </thead>
                 <tbody id="tableBody"></tbody>
@@ -1480,8 +1542,8 @@
 
   <div class="bulk-pdf-print" id="bulkPdfPrint" aria-hidden="true"></div>
 
-  <div class="overlay country-overlay" id="countryOverlay" role="dialog" aria-modal="true" aria-labelledby="detailCountry" aria-hidden="true">
-    <div class="overlay-panel">
+  <div class="overlay country-overlay" id="countryOverlay" role="dialog" aria-modal="true" aria-labelledby="detailCountry" aria-describedby="detailSummary" aria-hidden="true">
+    <div class="overlay-panel" tabindex="-1">
       <div class="overlay-head">
         <div>
           <div class="eyebrow">Fiche pays</div>
@@ -1537,13 +1599,13 @@
     </div>
   </div>
 
-  <div class="overlay" id="intelOverlay" role="dialog" aria-modal="true" aria-labelledby="intelOverlayTitle" aria-hidden="true">
-    <div class="overlay-panel">
+  <div class="overlay" id="intelOverlay" role="dialog" aria-modal="true" aria-labelledby="intelOverlayTitle" aria-describedby="intelOverlayDescription" aria-hidden="true">
+    <div class="overlay-panel" tabindex="-1">
       <div class="overlay-head">
         <div>
           <div class="eyebrow">Referentiel pays LCB-FT</div>
           <h2 id="intelOverlayTitle">Glossaire, sources et textes utiles</h2>
-          <p class="sub">Repere de travail pour lire les listes pays, qualifier l'effet operationnel et retrouver les sources officielles.</p>
+          <p class="sub" id="intelOverlayDescription">Repere de travail pour lire les listes pays, qualifier l'effet operationnel et retrouver les sources officielles.</p>
         </div>
         <button class="overlay-close" id="closeIntelOverlay" type="button" aria-label="Fermer l'overlay">Fermer</button>
       </div>
@@ -1661,43 +1723,43 @@
             <h3>Liens utiles et textes reglementaires</h3>
             <ul class="resource-list">
               <li>
-                <a href="https://www.fatf-gafi.org/en/topics/high-risk-and-other-monitored-jurisdictions.html" target="_blank" rel="noreferrer">
+                <a href="https://www.fatf-gafi.org/en/topics/high-risk-and-other-monitored-jurisdictions.html" target="_blank" rel="noreferrer" aria-label="GAFI - High-risk and other monitored jurisdictions, nouvelle fenêtre">
                   <b>GAFI - High-risk and other monitored jurisdictions</b>
                   <span>Listes GAFI, appels a action, juridictions sous surveillance accrue.</span>
                 </a>
               </li>
               <li>
-                <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32015L0849" target="_blank" rel="noreferrer">
+                <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32015L0849" target="_blank" rel="noreferrer" aria-label="Directive UE 2015/849 LCB-FT, nouvelle fenêtre">
                   <b>Directive (UE) 2015/849 - LCB-FT</b>
                   <span>Socle europeen AML/CFT, vigilance, approche par les risques et pays tiers a haut risque.</span>
                 </a>
               </li>
               <li>
-                <a href="https://finance.ec.europa.eu/financial-crime/high-risk-third-countries-and-international-context-content-anti-money-laundering-and-countering_en" target="_blank" rel="noreferrer">
+                <a href="https://finance.ec.europa.eu/financial-crime/high-risk-third-countries-and-international-context-content-anti-money-laundering-and-countering_en" target="_blank" rel="noreferrer" aria-label="Commission européenne - Pays tiers à haut risque, nouvelle fenêtre">
                   <b>Commission europeenne - Pays tiers a haut risque</b>
                   <span>Page de reference sur la politique UE relative aux PTHR en matiere LCB-FT.</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.sanctionsmap.eu/" target="_blank" rel="noreferrer">
+                <a href="https://www.sanctionsmap.eu/" target="_blank" rel="noreferrer" aria-label="EU Sanctions Map, nouvelle fenêtre">
                   <b>EU Sanctions Map</b>
                   <span>Cartographie officielle des regimes de sanctions adoptes par l'Union europeenne.</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.consilium.europa.eu/en/policies/eu-list-of-non-cooperative-jurisdictions/" target="_blank" rel="noreferrer">
+                <a href="https://www.consilium.europa.eu/en/policies/eu-list-of-non-cooperative-jurisdictions/" target="_blank" rel="noreferrer" aria-label="Conseil de l'Union européenne - Liste fiscale des juridictions non coopératives, nouvelle fenêtre">
                   <b>Conseil de l'UE - Liste fiscale des juridictions non cooperatives</b>
                   <span>Annexe I et etat des engagements en Annexe II.</span>
                 </a>
               </li>
               <li>
-                <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006170628/" target="_blank" rel="noreferrer">
+                <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006170628/" target="_blank" rel="noreferrer" aria-label="Code monétaire et financier - Obligations LCB-FT, nouvelle fenêtre">
                   <b>Code monetaire et financier - Obligations LCB-FT</b>
                   <span>Base nationale française pour les obligations de vigilance et de controle interne.</span>
                 </a>
               </li>
               <li>
-                <a href="https://bofip.impots.gouv.fr/bofip/5511-PGP.html" target="_blank" rel="noreferrer">
+                <a href="https://bofip.impots.gouv.fr/bofip/5511-PGP.html" target="_blank" rel="noreferrer" aria-label="BOFiP - États et territoires non coopératifs, nouvelle fenêtre">
                   <b>BOFiP - Etats et territoires non cooperatifs</b>
                   <span>Reference fiscale française relative aux ETNC.</span>
                 </a>
@@ -1770,6 +1832,16 @@
     };
 
     const dateFmt = new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium" });
+    let lastFocusedElement = null;
+
+    const focusableSelector = [
+      "a[href]",
+      "button:not([disabled])",
+      "input:not([disabled])",
+      "select:not([disabled])",
+      "textarea:not([disabled])",
+      "[tabindex]:not([tabindex='-1'])"
+    ].join(",");
     const PILL_LABELS = {
       all: "Tous",
       gafi: "GAFI",
@@ -1961,7 +2033,7 @@
     function renderPills() {
       const keys = Object.keys(PILL_LABELS);
       els.filterPills.innerHTML = keys.map((key) => `
-        <button class="pill${state.filters.pill === key ? " active" : ""}" type="button" data-pill="${key}">
+        <button class="pill${state.filters.pill === key ? " active" : ""}" type="button" data-pill="${key}" aria-pressed="${state.filters.pill === key ? "true" : "false"}">
           ${escapeHtml(PILL_LABELS[key])}
         </button>
       `).join("");
@@ -1977,6 +2049,7 @@
     function renderTableControls(items) {
       els.toolbarNote.textContent = `${items.length} pays affiches`;
       els.toggleMulti.classList.toggle("primary", state.filters.multiOnly);
+      els.toggleMulti.setAttribute("aria-pressed", state.filters.multiOnly ? "true" : "false");
       els.toggleMulti.textContent = state.filters.multiOnly ? ">= 3 listes active" : ">= 3 listes";
     }
 
@@ -2089,7 +2162,7 @@
         const count = activeLists(country).length;
         const checked = state.selectedForPdf.has(country.country) ? " checked" : "";
         return `
-          <tr data-country="${escapeHtml(country.country)}" class="${state.selectedCountry === country.country ? "active" : ""}">
+          <tr data-country="${escapeHtml(country.country)}" class="${state.selectedCountry === country.country ? "active" : ""}" tabindex="0" aria-label="Ouvrir la fiche pays ${escapeHtml(country.country)}">
             <td class="select-col">
               <input class="row-select" type="checkbox" data-select-country="${escapeHtml(country.country)}" aria-label="Selectionner ${escapeHtml(country.country)} pour export PDF"${checked}>
             </td>
@@ -2120,11 +2193,19 @@
       });
 
       els.tableBody.querySelectorAll("tr[data-country]").forEach((row) => {
-        row.addEventListener("click", () => {
+        const openRow = () => {
           state.selectedCountry = row.dataset.country;
           state.countryDetailOpen = true;
           render();
           setCountryOverlay(true);
+        };
+        row.addEventListener("click", openRow);
+        row.addEventListener("keydown", (event) => {
+          if (event.target.matches("input, button, a")) return;
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openRow();
+          }
         });
       });
     }
@@ -2199,10 +2280,31 @@
 
     function setCountryOverlay(open) {
       state.countryDetailOpen = open;
+      if (open) lastFocusedElement = document.activeElement;
       els.countryOverlay.classList.toggle("show", open);
       els.countryOverlay.setAttribute("aria-hidden", open ? "false" : "true");
       document.body.style.overflow = open ? "hidden" : "";
-      if (open) els.closeCountryOverlay.focus();
+      if (open) {
+        els.closeCountryOverlay.focus();
+      } else if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+        lastFocusedElement.focus();
+      }
+    }
+
+    function keepFocusInside(event, dialog) {
+      if (event.key !== "Tab" || !dialog.classList.contains("show")) return;
+      const focusable = [...dialog.querySelectorAll(focusableSelector)]
+        .filter((element) => element.offsetParent !== null || element === document.activeElement);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
 
     function exportCountryPdf() {
@@ -2363,10 +2465,15 @@
     const closeIntelOverlay = document.querySelector("#closeIntelOverlay");
 
     function setIntelOverlay(open) {
+      if (open) lastFocusedElement = document.activeElement;
       intelOverlay.classList.toggle("show", open);
       intelOverlay.setAttribute("aria-hidden", open ? "false" : "true");
       document.body.style.overflow = open ? "hidden" : "";
-      if (open) closeIntelOverlay.focus();
+      if (open) {
+        closeIntelOverlay.focus();
+      } else if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+        lastFocusedElement.focus();
+      }
     }
 
     openIntelOverlay.addEventListener("click", () => setIntelOverlay(true));
@@ -2375,6 +2482,8 @@
       if (event.target === intelOverlay) setIntelOverlay(false);
     });
     document.addEventListener("keydown", (event) => {
+      keepFocusInside(event, els.countryOverlay);
+      keepFocusInside(event, intelOverlay);
       if (event.key === "Escape" && els.countryOverlay.classList.contains("show")) {
         setCountryOverlay(false);
         return;
@@ -2385,7 +2494,7 @@
     });
 
     loadData().catch((error) => {
-      els.tableBody.innerHTML = `<tr><td colspan="7"><div class="empty-state">Chargement impossible: ${escapeHtml(error.message)}</div></td></tr>`;
+      els.tableBody.innerHTML = `<tr><td colspan="8"><div class="empty-state">Chargement impossible: ${escapeHtml(error.message)}</div></td></tr>`;
     });
 
     const navLinks = [...document.querySelectorAll(".nav a[href^='#']")]
