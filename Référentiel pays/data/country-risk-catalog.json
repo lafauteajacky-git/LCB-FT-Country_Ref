@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-19T00:00:00.000Z",
+  "hero": {
+    "eyebrow": "Outil de pilotage",
+    "title": "Referentiel pays LCB-FT",
+    "subtitle": "Base de pilotage pour distinguer un signal de risque, une obligation directe et un impact fiscal, a partir des listes publiques consolidees."
+  },
+  "sourceDates": {
+    "PTHR UE": "29/01/2026",
+    "GAFI": "13/02/2026",
+    "Sanctions": "13/02/2026",
+    "Fiscal UE": "17/02/2026",
+    "ETNC FR": "18/04/2025"
+  },
+  "guide": {
+    "principles": [
+      {
+        "title": "Obligation directe",
+        "text": "Sanctions UE/ONU et PTHR UE declenchent des mesures sans marge d'appreciation."
+      },
+      {
+        "title": "Signal de risque",
+        "text": "Les listes GAFI structurent le scoring pays et l'intensite des diligences."
+      },
+      {
+        "title": "Pont fiscal",
+        "text": "Tax blacklist UE et ETNC FR obligent a reviser la classification LCB-FT et activent des effets fiscaux."
+      }
+    ],
+    "process": [
+      "Detecter le mouvement sur la bonne source.",
+      "Qualifier la base juridique et l'effet operationnel.",
+      "Mettre a jour scoring, EDD, screening et fiscalite.",
+      "Tracer la decision et la date de prise en compte."
+    ]
+  },
+  "countries": [
+    { "rank": 1, "country": "Afghanistan", "gafi": "—", "pthr": "sept. 16", "sanctions": "Cible fevr. 00", "tax": "—", "etnc": "—" },
+    { "rank": 2, "country": "Algerie", "gafi": "Liste grise oct. 24", "pthr": "aout 25", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 3, "country": "Angola", "gafi": "Liste grise oct. 24", "pthr": "aout 25", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 4, "country": "Anguilla", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe I oct. 22", "etnc": "janv. 20" },
+    { "rank": 5, "country": "Antigua-et-Barbuda", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "—", "etnc": "fevr. 24" },
+    { "rank": 6, "country": "Belarus", "gafi": "—", "pthr": "—", "sanctions": "Sectoriel mars 22", "tax": "—", "etnc": "—" },
+    { "rank": 7, "country": "Belize", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe II fevr. 24", "etnc": "—" },
+    { "rank": 8, "country": "Bolivie", "gafi": "Liste grise juin 25", "pthr": "janv. 26", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 9, "country": "Brunei", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe II fevr. 25", "etnc": "—" },
+    { "rank": 10, "country": "Bulgarie", "gafi": "Liste grise oct. 23", "pthr": "—", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 11, "country": "Cameroun", "gafi": "Liste grise juin 23", "pthr": "oct. 23", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 12, "country": "Centrafrique", "gafi": "—", "pthr": "—", "sanctions": "Embargo dec. 13", "tax": "—", "etnc": "—" },
+    { "rank": 13, "country": "Coree du Nord", "gafi": "Liste noire fevr. 11", "pthr": "sept. 16", "sanctions": "UE + OFAC", "tax": "—", "etnc": "—" },
+    { "rank": 14, "country": "Cote d'Ivoire", "gafi": "Liste grise oct. 24", "pthr": "aout 25", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 15, "country": "Cuba", "gafi": "—", "pthr": "—", "sanctions": "OFAC", "tax": "—", "etnc": "—" },
+    { "rank": 16, "country": "Eswatini", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe II oct. 22", "etnc": "—" },
+    { "rank": 17, "country": "Fidji", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "—", "etnc": "janv. 20" },
+    { "rank": 18, "country": "Groenland", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe II oct. 25", "etnc": "—" },
+    { "rank": 19, "country": "Guam", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe I dec. 17", "etnc": "janv. 20" },
+    { "rank": 20, "country": "Haiti", "gafi": "Liste grise juin 21", "pthr": "mars 22", "sanctions": "Cible dec. 22", "tax": "—", "etnc": "—" },
+    { "rank": 21, "country": "Iran", "gafi": "Liste noire oct. 08", "pthr": "sept. 16", "sanctions": "UE + OFAC", "tax": "—", "etnc": "—" },
+    { "rank": 22, "country": "Jordanie", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe II oct. 25", "etnc": "—" },
+    { "rank": 23, "country": "Kenya", "gafi": "Liste grise fevr. 24", "pthr": "aout 25", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 24, "country": "Koweit", "gafi": "Liste grise fevr. 26", "pthr": "—", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 25, "country": "Laos", "gafi": "Liste grise fevr. 25", "pthr": "aout 25", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 26, "country": "Liban", "gafi": "Liste grise oct. 24", "pthr": "aout 25", "sanctions": "Cible juil. 20", "tax": "—", "etnc": "—" },
+    { "rank": 27, "country": "Libye", "gafi": "—", "pthr": "—", "sanctions": "Embargo fevr. 11", "tax": "—", "etnc": "—" },
+    { "rank": 28, "country": "Iles Vierges US", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe I mars 18", "etnc": "janv. 20" },
+    { "rank": 29, "country": "Iles Vierges GB", "gafi": "Liste grise juin 25", "pthr": "janv. 26", "sanctions": "—", "tax": "Annexe II oct. 23", "etnc": "—" },
+    { "rank": 30, "country": "Iles Turques-et-Caicos", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe I fevr. 26", "etnc": "fevr. 23" },
+    { "rank": 31, "country": "Mali", "gafi": "—", "pthr": "—", "sanctions": "Cible janv. 20", "tax": "—", "etnc": "—" },
+    { "rank": 32, "country": "Maroc", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe II oct. 25", "etnc": "—" },
+    { "rank": 33, "country": "Monaco", "gafi": "Liste grise juin 24", "pthr": "aout 25", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 34, "country": "Montenegro", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe II oct. 25", "etnc": "—" },
+    { "rank": 35, "country": "Myanmar", "gafi": "Liste noire oct. 22", "pthr": "oct. 20", "sanctions": "UE + OFAC", "tax": "—", "etnc": "—" },
+    { "rank": 36, "country": "Namibie", "gafi": "Liste grise fevr. 24", "pthr": "aout 25", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 37, "country": "Nepal", "gafi": "Liste grise fevr. 25", "pthr": "aout 25", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 38, "country": "Nicaragua", "gafi": "—", "pthr": "—", "sanctions": "Cible oct. 19", "tax": "—", "etnc": "—" },
+    { "rank": 39, "country": "Palaos", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe I fevr. 20", "etnc": "fevr. 21" },
+    { "rank": 40, "country": "Panama", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe I fevr. 20", "etnc": "avr. 16" },
+    { "rank": 41, "country": "Papouasie-Nouvelle-Guinee", "gafi": "Liste grise fevr. 26", "pthr": "—", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 42, "country": "Republique democratique du Congo", "gafi": "Liste grise oct. 22", "pthr": "mars 23", "sanctions": "Embargo avr. 03", "tax": "—", "etnc": "—" },
+    { "rank": 43, "country": "Russie", "gafi": "Suspendu fevr. 23", "pthr": "janv. 26", "sanctions": "UE + OFAC", "tax": "Annexe I fevr. 23", "etnc": "fevr. 24" },
+    { "rank": 44, "country": "Samoa", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "—", "etnc": "janv. 20" },
+    { "rank": 45, "country": "Samoa americaines", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe I dec. 17", "etnc": "janv. 20" },
+    { "rank": 46, "country": "Seychelles", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "—", "etnc": "—" },
+    { "rank": 47, "country": "Somalie", "gafi": "—", "pthr": "—", "sanctions": "Embargo dec. 02", "tax": "—", "etnc": "—" },
+    { "rank": 48, "country": "Soudan", "gafi": "—", "pthr": "—", "sanctions": "Embargo mars 94", "tax": "—", "etnc": "—" },
+    { "rank": 49, "country": "Soudan du Sud", "gafi": "Liste grise juin 21", "pthr": "mars 22", "sanctions": "Embargo juil. 14", "tax": "—", "etnc": "—" },
+    { "rank": 50, "country": "Syrie", "gafi": "Liste grise fevr. 10", "pthr": "sept. 16", "sanctions": "UE + OFAC", "tax": "—", "etnc": "—" },
+    { "rank": 51, "country": "Trinite-et-Tobago", "gafi": "—", "pthr": "mars 18", "sanctions": "—", "tax": "—", "etnc": "janv. 20" },
+    { "rank": 52, "country": "Turquie", "gafi": "—", "pthr": "—", "sanctions": "—", "tax": "Annexe II dec. 17", "etnc": "—" },
+    { "rank": 53, "country": "Vanuatu", "gafi": "—", "pthr": "sept. 16", "sanctions": "—", "tax": "Annexe I mars 19", "etnc": "janv. 20" },
+    { "rank": 54, "country": "Venezuela", "gafi": "Liste grise juin 24", "pthr": "aout 25", "sanctions": "UE + OFAC", "tax": "—", "etnc": "—" },
+    { "rank": 55, "country": "Viet Nam", "gafi": "Liste grise juin 23", "pthr": "oct. 23", "sanctions": "—", "tax": "Annexe I fevr. 26", "etnc": "—" },
+    { "rank": 56, "country": "Yemen", "gafi": "Liste grise fevr. 10", "pthr": "sept. 16", "sanctions": "Embargo avr. 15", "tax": "—", "etnc": "—" },
+    { "rank": 57, "country": "Zimbabwe", "gafi": "—", "pthr": "—", "sanctions": "Cible fevr. 02", "tax": "—", "etnc": "—" }
+  ]
+}

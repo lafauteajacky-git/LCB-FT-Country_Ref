@@ -1,0 +1,2409 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Referentiel pays LCB-FT</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #F4F4F4;
+      --bg-soft: #FFFFFF;
+      --panel: #FFFFFF;
+      --panel-soft: #F6F7F8;
+      --ink: #2C3446;
+      --ink-2: #39506C;
+      --muted: #7C8492;
+      --line: #E7E6E6;
+      --line-2: #F0F0F0;
+      --primary: #39506C;
+      --primary-dk: #2C3446;
+      --gold: #DC8056;
+      --gold-dk: #B85F38;
+      --gold-soft: #FBEDE4;
+      --red: #B0382B;
+      --red-bg: #F6E2DE;
+      --orange: #CC6B33;
+      --orange-bg: #F8E6D7;
+      --blue: #39506C;
+      --blue-bg: #E7EDF4;
+      --green: #5C8A55;
+      --green-bg: #E7F0E4;
+      --violet: #6E5B8F;
+      --violet-bg: #ECE7F3;
+      --radius: 12px;
+      --shadow: 0 1px 2px rgba(44,52,70,.05), 0 10px 28px rgba(44,52,70,.06);
+      --sans: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      --serif: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", serif;
+      --display: "Cormorant Garamond", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--ink-2); }
+    button, input { font: inherit; }
+    button { cursor: pointer; border: 0; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .app { display: flex; min-height: 100vh; }
+
+    .sidebar {
+      width: 248px;
+      flex: 0 0 248px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 22px 18px;
+      background: #2C3446;
+      border-right: 1px solid rgba(255,255,255,.12);
+      color: #fff;
+    }
+
+    .brand { margin-bottom: 26px; }
+
+    .brand-deco {
+      width: 40px;
+      height: 2px;
+      margin-bottom: 13px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, #E29A79 45%, transparent 100%);
+    }
+
+    .wordmark {
+      display: block;
+      width: 124px;
+      height: 42px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-indent: -9999px;
+      background-image: url("https://auria-advisory.fr/wp-content/uploads/2025/10/Logo-final-vertical-or-blanc-h.png");
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: 142px auto;
+    }
+
+    .brand-title {
+      margin-top: 7px;
+      color: #fff;
+      font-family: var(--display);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.05;
+    }
+
+    .brand-sub {
+      margin-top: 4px;
+      color: rgba(255,255,255,.66);
+      font-size: 10.5px;
+      letter-spacing: .04em;
+    }
+
+    .nav-group { margin-bottom: 18px; }
+
+    .nav-label {
+      margin: 0 0 8px 8px;
+      color: rgba(255,255,255,.54);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 10px;
+      border-left: 2px solid transparent;
+      border-radius: 8px;
+      color: rgba(255,255,255,.84);
+      font-size: 13.5px;
+      text-decoration: none;
+      transition: background .12s, border-color .12s, color .12s;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: rgba(255,255,255,.10);
+      color: #fff;
+      border-left-color: var(--gold);
+      box-shadow: none;
+    }
+
+    .nav a.active { font-weight: 600; }
+    .nav .ico { width: 16px; text-align: center; opacity: .85; }
+
+    .side-foot {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.66);
+      font-size: 11px;
+    }
+
+    .side-foot b { color: #fff; font-weight: 600; }
+    .side-foot .tagline {
+      margin-bottom: 7px;
+      color: #F0CBB4;
+      font-family: var(--serif);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 0;
+      color: rgba(255,255,255,.88);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+
+    .contact-links a:hover {
+      color: #fff;
+      border-bottom-color: var(--gold);
+    }
+
+    .contact-links img {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 auto;
+    }
+
+    .contact-text {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+      min-width: 0;
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .contact-type {
+      color: #F0CBB4;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .main {
+      flex: 1;
+      min-width: 0;
+      padding: 34px clamp(20px, 4vw, 56px) 80px;
+    }
+
+    section { scroll-margin-top: 24px; margin-bottom: 30px; }
+
+    .card,
+    .source-card,
+    .stat,
+    .guide-card,
+    .table-shell,
+    .detail-card,
+    .note-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .pad { padding: 26px clamp(18px, 3vw, 34px); }
+
+    .eyebrow {
+      margin-bottom: 10px;
+      color: var(--gold-dk);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-weight: 700;
+      letter-spacing: -.2px;
+    }
+
+    h1 {
+      margin-bottom: 4px;
+      font-size: clamp(30px, 4.2vw, 46px);
+      line-height: 1.08;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+      font-size: 24px;
+    }
+
+    h2 .num { color: var(--gold-dk); }
+    h3 { margin-bottom: 8px; font-size: 18px; }
+
+    .lead {
+      max-width: 790px;
+      margin: 0;
+      color: #4a4d52;
+      font-size: 14.5px;
+    }
+
+    .sub,
+    .table-subtitle,
+    .toolbar-note,
+    .guide-card p,
+    .guide-card li,
+    .detail-card p,
+    .detail-card li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .8fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--ink-2);
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: background .12s, border-color .12s, filter .12s, box-shadow .12s;
+    }
+
+    .btn:hover {
+      background: var(--panel-soft);
+      border-color: var(--gold);
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      filter: brightness(1.12);
+      box-shadow: 0 0 0 2px var(--gold-soft);
+    }
+
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: .48;
+      box-shadow: none;
+    }
+
+    .btn.is-loading { opacity: .72; pointer-events: none; }
+
+    .source-card { padding: 18px; background: var(--panel-soft); }
+    .source-card h2 { margin-bottom: 12px; font-size: 20px; }
+
+    .source-list { display: grid; gap: 0; }
+
+    .source-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-top: 1px solid var(--line-2);
+    }
+
+    .source-row:first-child { border-top: 0; padding-top: 0; }
+    .source-row strong { color: var(--ink-2); font-size: 13px; font-weight: 600; }
+    .source-row span { color: var(--muted); font-size: 12px; text-align: right; }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .guide-card {
+      padding: 18px;
+      background: var(--panel-soft);
+      border-top: 3px solid var(--line);
+    }
+
+    .guide-card:nth-child(1) { border-top-color: var(--red); }
+    .guide-card:nth-child(2) { border-top-color: var(--blue); }
+    .guide-card:nth-child(3) { border-top-color: var(--gold); }
+    .guide-card ol, .detail-card ul { margin: 10px 0 0; padding-left: 18px; }
+
+    .source-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .source-tile {
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--line);
+    }
+
+    .source-tile:nth-child(1) { border-top-color: var(--blue); }
+    .source-tile:nth-child(2) { border-top-color: var(--red); }
+    .source-tile:nth-child(3) { border-top-color: var(--orange); }
+    .source-tile:nth-child(4) { border-top-color: var(--green); }
+    .source-tile:nth-child(5) { border-top-color: var(--gold); }
+
+    .source-tile h3 {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+
+    .source-tile p {
+      margin: 8px 0 0;
+      color: #4d4a45;
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .source-date {
+      display: inline-flex;
+      margin-top: 12px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--panel-soft);
+      color: var(--muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .source-frequency {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink-2);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .stats-dashboard {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat-tile {
+      display: grid;
+      gap: 8px;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--line);
+    }
+
+    .stat-tile.primary { grid-column: span 3; border-top-color: var(--blue); }
+    .stat-tile.wide { grid-column: span 6; }
+    .stat-tile.full { grid-column: 1 / -1; }
+    .stat-tile.red { border-top-color: var(--red); }
+    .stat-tile.orange { border-top-color: var(--orange); }
+    .stat-tile.green { border-top-color: var(--green); }
+    .stat-tile.violet { border-top-color: var(--violet); }
+
+    .stat-kicker {
+      color: var(--muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1;
+    }
+
+    .stat-caption {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .stat-bars {
+      display: grid;
+      gap: 12px;
+    }
+
+    .stat-bar-row {
+      display: grid;
+      gap: 6px;
+    }
+
+    .stat-bar-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--ink-2);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .stat-bar {
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+    }
+
+    .stat-bar span {
+      display: block;
+      height: 100%;
+      width: var(--w, 0%);
+      border-radius: inherit;
+      background: var(--blue);
+    }
+
+    .stat-bar-row.red .stat-bar span { background: var(--red); }
+    .stat-bar-row.orange .stat-bar span { background: var(--orange); }
+    .stat-bar-row.green .stat-bar span { background: var(--green); }
+    .stat-bar-row.violet .stat-bar span { background: var(--violet); }
+
+    .refresh-panel {
+      min-width: min(100%, 360px);
+      padding: 14px 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .refresh-panel-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .refresh-meta {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .refresh-bar {
+      position: relative;
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--line-2);
+    }
+
+    .refresh-bar span {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--gold), var(--primary));
+      transition: width .35s ease;
+    }
+
+    .refresh-panel.is-loading .refresh-bar span {
+      width: 72%;
+      animation: refreshPulse 1s ease-in-out infinite;
+    }
+
+    .refresh-panel.is-done .refresh-bar span { width: 100%; }
+
+    @keyframes refreshPulse {
+      0% { transform: translateX(-35%); opacity: .65; }
+      50% { transform: translateX(20%); opacity: 1; }
+      100% { transform: translateX(65%); opacity: .72; }
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .section-head .sub { margin: 0; }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      padding: 28px;
+      background: rgba(44, 52, 70, .52);
+      backdrop-filter: blur(8px);
+    }
+
+    .overlay.show {
+      display: grid;
+      place-items: center;
+    }
+
+    .overlay-panel {
+      width: min(1060px, 100%);
+      max-height: min(86vh, 860px);
+      overflow: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 24px 80px rgba(44,52,70,.28);
+    }
+
+    .overlay-head {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 24px 28px 18px;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .overlay-head h2 { display: block; }
+
+    .overlay-close {
+      flex: 0 0 auto;
+      min-width: 38px;
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-soft);
+      color: var(--ink-2);
+      font-weight: 700;
+    }
+
+    .overlay-body {
+      display: grid;
+      gap: 18px;
+      padding: 22px 28px 28px;
+    }
+
+    .overlay-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+
+    .overlay-block {
+      padding: 18px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .overlay-block h3 {
+      color: var(--ink-2);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .glossary-item {
+      padding: 13px 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .glossary-item b {
+      display: block;
+      color: var(--ink-2);
+      font-size: 13.5px;
+    }
+
+    .glossary-item p {
+      margin: 5px 0 0;
+      color: #4d4a45;
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .glossary-tag {
+      display: inline-flex;
+      margin-bottom: 7px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--blue-bg);
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .glossary-tag.risk { background: var(--red-bg); color: var(--red); }
+    .glossary-tag.tax { background: var(--green-bg); color: var(--green); }
+    .glossary-tag.ops { background: var(--gold-soft); color: var(--gold-dk); }
+
+    .resource-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .resource-list a {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .resource-list a:hover { border-color: var(--gold); background: var(--gold-soft); }
+    .resource-list b { display: block; color: var(--ink-2); font-size: 13.5px; }
+    .resource-list span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+
+    .term-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 13px;
+      color: #4d4a45;
+    }
+
+    .term-list b { color: var(--ink-2); }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .left-col { display: grid; gap: 18px; }
+
+    .table-shell { padding: 0; overflow: hidden; }
+    .table-head { display: grid; gap: 14px; padding: 22px 24px 18px; }
+
+    .table-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .toolbar-note {
+      margin-bottom: 3px;
+      white-space: nowrap;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .filters { display: grid; gap: 12px; }
+
+    .selection-tools {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel-soft);
+    }
+
+    .selection-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .selection-status {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .searchbox { position: relative; }
+
+    .searchbox input {
+      width: 100%;
+      min-height: 42px;
+      padding: 0 14px 0 42px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .searchbox input:focus { outline: none; border-color: var(--primary); }
+
+    .searchbox::before {
+      content: "⌕";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .pill {
+      min-height: 31px;
+      padding: 5px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink-2);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: background .12s, border-color .12s, color .12s;
+    }
+
+    .pill:hover { border-color: var(--gold); }
+    .pill.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+    .table-wrap {
+      overflow-x: hidden;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 11px 8px;
+      background: var(--primary-dk);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+
+    tbody td {
+      padding: 11px 8px;
+      border-top: 1px solid var(--line-2);
+      color: #4d4a45;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    tbody tr { cursor: pointer; transition: background .12s; }
+    tbody tr:nth-child(even) { background: var(--panel-soft); }
+    tbody tr:hover,
+    tbody tr.active { background: var(--gold-soft); }
+
+    th.select-col,
+    td.select-col {
+      width: 4.8%;
+      text-align: center;
+    }
+
+    .row-select {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    td.rank {
+      width: 4.8%;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    th.country-col,
+    td.country { width: 21%; }
+
+    th.list-col,
+    td.list-col { width: 13.9%; }
+
+    td.country strong {
+      display: block;
+      color: var(--ink-2);
+      font-weight: 600;
+    }
+
+    td.country span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .marker,
+    .severity {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.25;
+      white-space: normal;
+    }
+
+    .marker { min-height: 26px; padding: 3px 8px; color: var(--blue); background: var(--blue-bg); }
+    .marker.empty { color: var(--muted); background: transparent; border: 1px dashed var(--line); }
+    .marker.grey { background: var(--orange-bg); color: var(--orange); }
+    .marker.black { background: var(--red-bg); color: var(--red); }
+    .marker.pthr { background: var(--blue-bg); color: var(--blue); }
+    .marker.sanctions { background: var(--red-bg); color: var(--red); }
+    .marker.tax-i { background: var(--orange-bg); color: var(--orange); }
+    .marker.tax-ii { background: var(--gold-soft); color: var(--gold-dk); }
+    .marker.etnc { background: var(--green-bg); color: var(--green); }
+    .marker.suspended { background: var(--violet-bg); color: var(--violet); }
+
+    .detail-card {
+      display: grid;
+      gap: 16px;
+      padding: 22px;
+      box-shadow: none;
+    }
+
+    .detail-head {
+      display: grid;
+      gap: 10px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line-2);
+    }
+
+    .detail-head h2 {
+      display: block;
+      font-size: 28px;
+      line-height: 1.05;
+    }
+
+    .severity {
+      min-height: 28px;
+      padding: 4px 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .severity.critical { background: var(--red-bg); color: var(--red); }
+    .severity.high { background: var(--orange-bg); color: var(--orange); }
+    .severity.medium { background: var(--blue-bg); color: var(--blue); }
+    .severity.monitor { background: var(--green-bg); color: var(--green); }
+
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .mini {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel-soft);
+    }
+
+    .mini span {
+      display: block;
+      color: var(--muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .mini strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink-2);
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .note-card {
+      padding: 15px 18px;
+      background: var(--panel-soft);
+    }
+
+    .note-card h3 { margin-bottom: 8px; font-size: 16px; }
+
+    .country-overlay .overlay-panel {
+      width: min(860px, 100%);
+    }
+
+    .country-overlay .overlay-body {
+      padding: 0;
+    }
+
+    .country-overlay .detail-card {
+      border: 0;
+      border-radius: 0;
+    }
+
+    .country-overlay-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .empty-state {
+      margin: 12px;
+      padding: 20px;
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      background: var(--panel-soft);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .bulk-pdf-print {
+      display: none;
+    }
+
+    .bulk-print-card {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .bulk-print-card + .bulk-print-card {
+      page-break-before: always;
+    }
+
+    .bulk-print-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .bulk-print-head h1 {
+      font-size: 30px;
+    }
+
+    .bulk-print-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .bulk-print-section {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel-soft);
+    }
+
+    .bulk-print-section h3 {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+
+    .page-foot {
+      margin-top: 40px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .foot-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .fb-name {
+      color: var(--gold);
+      font-family: var(--display);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .fb-tag {
+      color: var(--gold-dk);
+      font-family: var(--display);
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .main-grid,
+      .guide-grid,
+      .overlay-grid,
+      .glossary-grid,
+      .source-map {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-tile.primary,
+      .stat-tile.wide {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 880px) {
+      .sidebar { display: none; }
+      .main { padding: 24px 18px 60px; }
+    }
+
+    @media (max-width: 700px) {
+      .table-title,
+      .search-row,
+      .selection-tools,
+      .section-head,
+      .summary-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .overlay { padding: 12px; }
+      .overlay-head,
+      .overlay-body { padding-left: 18px; padding-right: 18px; }
+
+      .stat-tile.primary,
+      .stat-tile.wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media print {
+      body.print-country-detail {
+        background: #fff;
+      }
+
+      body.print-country-detail .app,
+      body.print-country-detail #intelOverlay,
+      body.print-country-detail .country-overlay:not(.show) {
+        display: none !important;
+      }
+
+      body.print-country-detail #countryOverlay {
+        position: static;
+        display: block !important;
+        padding: 0;
+        background: #fff;
+        backdrop-filter: none;
+      }
+
+      body.print-country-detail #countryOverlay .overlay-panel {
+        width: 100%;
+        max-height: none;
+        overflow: visible;
+        border: 0;
+        box-shadow: none;
+      }
+
+      body.print-country-detail #countryOverlay .overlay-head {
+        position: static;
+        padding: 0 0 18px;
+        border-bottom: 2px solid var(--gold);
+      }
+
+      body.print-country-detail #countryOverlay .overlay-body {
+        padding: 18px 0 0;
+      }
+
+      body.print-country-detail .country-overlay-actions,
+      body.print-country-detail #closeCountryOverlay {
+        display: none !important;
+      }
+
+      body.print-country-detail .detail-card,
+      body.print-country-detail .note-card,
+      body.print-country-detail .mini {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      body.print-country-selection {
+        background: #fff;
+      }
+
+      body.print-country-selection .app,
+      body.print-country-selection #intelOverlay,
+      body.print-country-selection #countryOverlay {
+        display: none !important;
+      }
+
+      body.print-country-selection #bulkPdfPrint {
+        display: block !important;
+        color: var(--ink);
+      }
+
+      body.print-country-selection .bulk-pdf-print {
+        display: block !important;
+      }
+
+      body.print-country-selection .bulk-print-card {
+        border-bottom: 0;
+      }
+
+      body.print-country-selection .bulk-print-section,
+      body.print-country-selection .mini {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-deco"></div>
+        <div class="wordmark">Auria Advisory</div>
+        <div class="brand-title">Referentiel pays<br>LCB-FT</div>
+        <div class="brand-sub">Outil de pilotage et controle interne</div>
+      </div>
+
+      <div class="nav-group">
+        <p class="nav-label">Navigation</p>
+        <nav class="nav">
+          <a class="active" href="#accueil"><span class="ico">01</span> Accueil</a>
+          <a href="#lecture"><span class="ico">02</span> Cadre d'analyse</a>
+          <a href="#sources-donnees"><span class="ico">03</span> Sources</a>
+          <a href="#tableau"><span class="ico">04</span> Referentiel</a>
+          <a href="#statistiques"><span class="ico">05</span> Statistiques</a>
+        </nav>
+      </div>
+
+      <div class="nav-group">
+        <p class="nav-label">Exports</p>
+        <nav class="nav">
+          <a href="#" id="navExportCsv"><span class="ico">CSV</span> Exporter CSV</a>
+          <a href="#" id="navExportJson"><span class="ico">JS</span> Exporter JSON</a>
+        </nav>
+      </div>
+
+      <div class="side-foot">
+        <div class="tagline">Consulting That Makes Sense</div>
+        <b>Contactez-nous</b>
+        <div class="contact-links" aria-label="Coordonnees Auria Advisory">
+          <a href="https://auria-advisory.fr/" target="_blank" rel="noreferrer">
+            <img src="assets/contact-web.png" alt="" aria-hidden="true">
+            <span class="contact-text">Site internet <span class="contact-type">Web</span></span>
+          </a>
+          <a href="https://www.linkedin.com/company/auria-advisory/" target="_blank" rel="noreferrer">
+            <img src="assets/contact-linkedin.png" alt="" aria-hidden="true">
+            <span class="contact-text">Page LinkedIn <span class="contact-type">In</span></span>
+          </a>
+          <a href="mailto:contact@auria-advisory.com">
+            <img src="assets/contact-mail.png" alt="" aria-hidden="true">
+            <span class="contact-text">contact@auria-advisory.com <span class="contact-type">Mail</span></span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="card pad" id="accueil">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow" id="heroEyebrow">Outil de pilotage</div>
+            <h1 id="heroTitle">Referentiel pays LCB-FT</h1>
+            <p class="lead" id="heroSubtitle">Chargement du referentiel...</p>
+            <div class="hero-actions">
+              <button class="btn primary" id="exportCsv" type="button">Exporter CSV</button>
+              <button class="btn" id="exportJson" type="button">Exporter JSON</button>
+            </div>
+          </div>
+
+          <aside class="source-card" id="sources">
+            <h2><span class="num">Src.</span> Dates de source</h2>
+            <div class="source-list" id="sourceList"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="lecture">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Mode d'emploi</div>
+            <h2><span class="num">02</span> Cadre d'analyse pays</h2>
+            <p class="sub">Organisation des idees conservee, avec un acces rapide au lexique et aux sources de reference.</p>
+          </div>
+          <button class="btn" id="openIntelOverlay" type="button">Glossaire et textes utiles</button>
+        </div>
+        <div class="guide-grid">
+          <article class="guide-card">
+            <h3>Signal ou obligation</h3>
+            <p id="principleOne"></p>
+          </article>
+          <article class="guide-card">
+            <h3>Lecture operationnelle</h3>
+            <p id="principleTwo"></p>
+          </article>
+          <article class="guide-card">
+            <h3>Processus de mise a jour</h3>
+            <ol id="processList"></ol>
+          </article>
+        </div>
+      </section>
+
+      <section id="sources-donnees">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Donnees sources</div>
+            <h2><span class="num">03</span> Sources de constitution du referentiel</h2>
+            <p class="sub">Les statuts pays consolident plusieurs familles de sources publiques. Chaque source nourrit une dimension distincte : risque LCB-FT, obligation de vigilance, sanctions ou fiscalite.</p>
+          </div>
+          <div class="refresh-panel" id="refreshPanel">
+            <div class="refresh-panel-top">
+              <div>
+                <div class="refresh-meta" id="refreshStatus">Derniere actualisation -</div>
+                <div class="sub">Simulation de synchronisation des sources</div>
+              </div>
+              <button class="btn primary" id="refreshData" type="button">Actualiser</button>
+            </div>
+            <div class="refresh-bar" aria-hidden="true"><span id="refreshProgress"></span></div>
+          </div>
+        </div>
+
+        <div class="source-map">
+          <article class="source-tile">
+            <h3>GAFI</h3>
+            <p>Listes des juridictions a haut risque ou sous surveillance accrue. Utilisees comme signal de risque pour le scoring pays.</p>
+            <span class="source-date" id="sourceDateGafi">Date source -</span>
+            <span class="source-frequency">Frequence : apres chaque pleniere GAFI, en principe fevrier, juin et octobre.</span>
+          </article>
+          <article class="source-tile">
+            <h3>PTHR UE</h3>
+            <p>Pays tiers a haut risque identifies au niveau europeen. Ils declenchent une vigilance renforcee obligatoire.</p>
+            <span class="source-date" id="sourceDatePthr">Date source -</span>
+            <span class="source-frequency">Frequence : non fixe ; mise a jour par actes delegues de la Commission europeenne.</span>
+          </article>
+          <article class="source-tile">
+            <h3>Sanctions</h3>
+            <p>Regimes UE, ONU ou OFAC reperes pour identifier les obligations de filtrage, blocage, gel ou interdiction.</p>
+            <span class="source-date" id="sourceDateSanctions">Date source -</span>
+            <span class="source-frequency">Frequence : au fil de l'eau, selon les decisions, reglements et modifications de regimes.</span>
+          </article>
+          <article class="source-tile">
+            <h3>Fiscal UE</h3>
+            <p>Liste europeenne des juridictions non cooperatives et juridictions sous engagement fiscal.</p>
+            <span class="source-date" id="sourceDateFiscal">Date source -</span>
+            <span class="source-frequency">Frequence : deux fois par an depuis 2020, selon le calendrier du Conseil de l'UE.</span>
+          </article>
+          <article class="source-tile">
+            <h3>ETNC FR</h3>
+            <p>Liste fiscale française des Etats et territoires non cooperatifs, utile pour croiser exposition LCB-FT et effets fiscaux.</p>
+          <span class="source-date" id="sourceDateEtnc">Date source -</span>
+            <span class="source-frequency">Frequence : non fixe dans cette version ; actualisation par arrete français a surveiller.</span>
+          </article>
+        </div>
+      </section>
+
+      <div class="main-grid">
+        <section class="left-col" id="tableau">
+          <div class="table-shell">
+            <div class="table-head">
+              <div class="table-title">
+                <div>
+                  <div class="eyebrow">Referentiel</div>
+                  <h2><span class="num">04</span> Referentiel interactif</h2>
+                  <div class="table-subtitle">Table pays consolidee, enrichie d'une lecture operationnelle pour les equipes conformite.</div>
+                </div>
+                <div class="toolbar-note" id="toolbarNote">0 pays affiches</div>
+              </div>
+
+              <div class="filters">
+                <div class="search-row">
+                  <label class="searchbox">
+                    <input id="searchInput" type="search" placeholder="Rechercher un pays, une liste ou un effet..." autocomplete="off">
+                  </label>
+                  <button class="btn" id="toggleMulti" type="button">>= 3 listes</button>
+                </div>
+                <div class="filter-pills" id="filterPills"></div>
+                <div class="selection-tools">
+                  <div class="selection-status" id="selectionStatus">0 pays selectionne</div>
+                  <div class="selection-actions">
+                    <button class="btn primary" id="exportSelectionPdf" type="button" disabled>Exporter la selection PDF</button>
+                    <button class="btn" id="clearSelection" type="button" disabled>Effacer la selection</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="select-col">PDF</th>
+                    <th>#</th>
+                    <th class="country-col">Pays</th>
+                    <th class="list-col">GAFI</th>
+                    <th class="list-col">PTHR UE</th>
+                    <th class="list-col">Sanctions</th>
+                    <th class="list-col">Tax UE</th>
+                    <th class="list-col">ETNC FR</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <section id="statistiques">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Base de referentiel</div>
+            <h2><span class="num">05</span> Statistiques descriptives</h2>
+            <p class="sub">Lecture synthetique de la base chargee : couverture par source, empilements de listes et repartition des niveaux d'attention.</p>
+          </div>
+        </div>
+
+        <div class="stats-dashboard" id="statsDashboard" aria-live="polite"></div>
+      </section>
+
+      <footer class="page-foot">
+        <div class="foot-brand">
+          <span class="fb-name">Auria Advisory</span>
+          <span class="fb-tag">Consulting That Makes Sense</span>
+        </div>
+        Base de travail. Les donnees et libelles metier sont conserves ; la mise en forme est alignee sur les standards Auria Advisory.
+      </footer>
+    </main>
+  </div>
+
+  <div class="bulk-pdf-print" id="bulkPdfPrint" aria-hidden="true"></div>
+
+  <div class="overlay country-overlay" id="countryOverlay" role="dialog" aria-modal="true" aria-labelledby="detailCountry" aria-hidden="true">
+    <div class="overlay-panel">
+      <div class="overlay-head">
+        <div>
+          <div class="eyebrow">Fiche pays</div>
+          <h2>Analyse operationnelle</h2>
+          <p class="sub">Synthese pays issue du referentiel filtre. Export possible en PDF via l'impression de la fiche.</p>
+          <div class="country-overlay-actions">
+            <button class="btn primary" id="exportCountryPdf" type="button">Exporter PDF</button>
+            <button class="overlay-close" id="closeCountryOverlay" type="button" aria-label="Fermer la fiche pays">Fermer</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay-body">
+        <section class="detail-card">
+          <div class="detail-head">
+            <div class="severity" id="severityPill">A surveiller</div>
+            <h2 id="detailCountry">Selectionner un pays</h2>
+            <p id="detailSummary">Choisissez une ligne pour obtenir la lecture operationnelle.</p>
+          </div>
+
+          <div class="badge-row" id="detailBadges"></div>
+
+          <div class="summary-grid">
+            <div class="mini">
+              <span>Regime dominant</span>
+              <strong id="detailDominant">-</strong>
+            </div>
+            <div class="mini">
+              <span>Effet prioritaire</span>
+              <strong id="detailEffect">-</strong>
+            </div>
+            <div class="mini">
+              <span>Nombre de listes</span>
+              <strong id="detailCount">-</strong>
+            </div>
+            <div class="mini">
+              <span>Posture recommandee</span>
+              <strong id="detailPosture">-</strong>
+            </div>
+          </div>
+
+          <div class="note-card">
+            <h3>Actions immediates</h3>
+            <ul id="detailActions"></ul>
+          </div>
+
+          <div class="note-card">
+            <h3>Sources declenchantes</h3>
+            <ul id="detailSources"></ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="intelOverlay" role="dialog" aria-modal="true" aria-labelledby="intelOverlayTitle" aria-hidden="true">
+    <div class="overlay-panel">
+      <div class="overlay-head">
+        <div>
+          <div class="eyebrow">Referentiel pays LCB-FT</div>
+          <h2 id="intelOverlayTitle">Glossaire, sources et textes utiles</h2>
+          <p class="sub">Repere de travail pour lire les listes pays, qualifier l'effet operationnel et retrouver les sources officielles.</p>
+        </div>
+        <button class="overlay-close" id="closeIntelOverlay" type="button" aria-label="Fermer l'overlay">Fermer</button>
+      </div>
+
+      <div class="overlay-body">
+        <div class="overlay-block">
+          <h3>Glossaire essentiel</h3>
+          <div class="glossary-grid" aria-label="Glossaire LCB-FT">
+            <article class="glossary-item">
+              <span class="glossary-tag ops">Socle</span>
+              <b>Referentiel pays</b>
+              <p>Base de suivi qui regroupe les statuts pays utiles a la classification LCB-FT, sanctions et fiscalite.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag ops">Socle</span>
+              <b>LCB-FT</b>
+              <p>Lutte contre le blanchiment de capitaux et le financement du terrorisme.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag">Risque</span>
+              <b>Risque pays</b>
+              <p>Facteur de risque lie a une juridiction, utilise pour ajuster le scoring, les diligences et la surveillance.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag">GAFI</span>
+              <b>GAFI / FATF</b>
+              <p>Organisme international qui identifie les juridictions exposees a des defaillances LCB-FT strategiques.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag risk">GAFI</span>
+              <b>Liste noire</b>
+              <p>Juridictions faisant l'objet d'un appel a action. Le traitement doit etre maximal et documente.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag">GAFI</span>
+              <b>Liste grise</b>
+              <p>Juridictions sous surveillance accrue, avec plan d'action suivi par le GAFI.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag risk">UE</span>
+              <b>PTHR UE</b>
+              <p>Pays tiers a haut risque au sens de l'Union europeenne, declenchant une vigilance renforcee.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag risk">Sanctions</span>
+              <b>Sanctions UE / ONU / OFAC</b>
+              <p>Regimes de restrictions, gels d'avoirs ou embargos qui peuvent imposer un blocage operationnel.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag risk">Sanctions</span>
+              <b>Gel des avoirs</b>
+              <p>Mesure visant a immobiliser les fonds ou ressources economiques d'une personne, entite ou regime vise.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag ops">Controle</span>
+              <b>Screening</b>
+              <p>Filtrage d'un client, beneficiaire, contrepartie ou transaction contre des listes de sanctions ou de vigilance.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag ops">Vigilance</span>
+              <b>EDD / vigilance renforcee</b>
+              <p>Diligences approfondies : source des fonds, patrimoine, justification economique, validation et monitoring renforce.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag ops">Vigilance</span>
+              <b>Beneficiaire effectif</b>
+              <p>Personne physique qui controle en dernier ressort le client ou la structure analysee.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag ops">Pilotage</span>
+              <b>Scoring pays</b>
+              <p>Notation interne qui traduit le niveau d'exposition d'un pays dans la classification du risque.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag ops">Pilotage</span>
+              <b>Approche par les risques</b>
+              <p>Principe consistant a calibrer les controles selon l'exposition reelle plutot qu'a appliquer un traitement uniforme.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag tax">Fiscalite</span>
+              <b>Liste fiscale UE</b>
+              <p>Liste des juridictions non cooperatives ou sous engagement fiscal suivie par le Conseil de l'Union europeenne.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag tax">Fiscalite</span>
+              <b>ETNC FR</b>
+              <p>Etats et territoires non cooperatifs au sens fiscal français, avec effets potentiels de retenue, deductibilite ou reporting.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag tax">Fiscalite</span>
+              <b>DAC6</b>
+              <p>Dispositif europeen de declaration de certains montages transfrontieres potentiellement agressifs.</p>
+            </article>
+            <article class="glossary-item">
+              <span class="glossary-tag ops">Preuve</span>
+              <b>Traçabilite</b>
+              <p>Capacite a justifier la source, la date, la qualification retenue et la decision operationnelle.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="overlay-grid">
+          <div class="overlay-block">
+            <h3>Grille de lecture rapide</h3>
+            <ul class="term-list">
+              <li><b>Signal de risque :</b> indice qui nourrit le scoring et le niveau de diligence, notamment les listes GAFI.</li>
+              <li><b>Obligation directe :</b> mesure sans marge d'appreciation, notamment sanctions et PTHR UE.</li>
+              <li><b>Impact fiscal :</b> effet de classification ou de mesures defensives lie aux listes fiscales UE et ETNC FR.</li>
+              <li><b>Empilement :</b> AML, sanctions et fiscalite doivent rester distingues meme lorsqu'un pays apparait sur plusieurs listes.</li>
+              <li><b>Traçabilite :</b> la date de source, la base juridique et la decision operationnelle doivent rester auditables.</li>
+            </ul>
+          </div>
+
+          <div class="overlay-block">
+            <h3>Liens utiles et textes reglementaires</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="https://www.fatf-gafi.org/en/topics/high-risk-and-other-monitored-jurisdictions.html" target="_blank" rel="noreferrer">
+                  <b>GAFI - High-risk and other monitored jurisdictions</b>
+                  <span>Listes GAFI, appels a action, juridictions sous surveillance accrue.</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32015L0849" target="_blank" rel="noreferrer">
+                  <b>Directive (UE) 2015/849 - LCB-FT</b>
+                  <span>Socle europeen AML/CFT, vigilance, approche par les risques et pays tiers a haut risque.</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://finance.ec.europa.eu/financial-crime/high-risk-third-countries-and-international-context-content-anti-money-laundering-and-countering_en" target="_blank" rel="noreferrer">
+                  <b>Commission europeenne - Pays tiers a haut risque</b>
+                  <span>Page de reference sur la politique UE relative aux PTHR en matiere LCB-FT.</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.sanctionsmap.eu/" target="_blank" rel="noreferrer">
+                  <b>EU Sanctions Map</b>
+                  <span>Cartographie officielle des regimes de sanctions adoptes par l'Union europeenne.</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.consilium.europa.eu/en/policies/eu-list-of-non-cooperative-jurisdictions/" target="_blank" rel="noreferrer">
+                  <b>Conseil de l'UE - Liste fiscale des juridictions non cooperatives</b>
+                  <span>Annexe I et etat des engagements en Annexe II.</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006170628/" target="_blank" rel="noreferrer">
+                  <b>Code monetaire et financier - Obligations LCB-FT</b>
+                  <span>Base nationale française pour les obligations de vigilance et de controle interne.</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://bofip.impots.gouv.fr/bofip/5511-PGP.html" target="_blank" rel="noreferrer">
+                  <b>BOFiP - Etats et territoires non cooperatifs</b>
+                  <span>Reference fiscale française relative aux ETNC.</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script id="fallbackCatalog" type="application/json">
+    {"version":1,"updatedAt":"2026-06-19T00:00:00.000Z","hero":{"eyebrow":"Outil de pilotage","title":"Referentiel pays LCB-FT","subtitle":"Base de pilotage pour distinguer un signal de risque, une obligation directe et un impact fiscal, a partir des listes publiques consolidees."},"sourceDates":{"PTHR UE":"29/01/2026","GAFI":"13/02/2026","Sanctions":"13/02/2026","Fiscal UE":"17/02/2026","ETNC FR":"18/04/2025"},"guide":{"principles":[{"title":"Obligation directe","text":"Sanctions UE/ONU et PTHR UE declenchent des mesures sans marge d'appreciation."},{"title":"Signal de risque","text":"Les listes GAFI structurent le scoring pays et l'intensite des diligences."},{"title":"Pont fiscal","text":"Tax blacklist UE et ETNC FR obligent a reviser la classification LCB-FT et activent des effets fiscaux."}],"process":["Detecter le mouvement sur la bonne source.","Qualifier la base juridique et l'effet operationnel.","Mettre a jour scoring, EDD, screening et fiscalite.","Tracer la decision et la date de prise en compte."]},"countries":[{"rank":1,"country":"Afghanistan","gafi":"—","pthr":"sept. 16","sanctions":"Cible fevr. 00","tax":"—","etnc":"—"},{"rank":2,"country":"Algerie","gafi":"Liste grise oct. 24","pthr":"aout 25","sanctions":"—","tax":"—","etnc":"—"},{"rank":3,"country":"Angola","gafi":"Liste grise oct. 24","pthr":"aout 25","sanctions":"—","tax":"—","etnc":"—"},{"rank":4,"country":"Anguilla","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe I oct. 22","etnc":"janv. 20"},{"rank":5,"country":"Antigua-et-Barbuda","gafi":"—","pthr":"—","sanctions":"—","tax":"—","etnc":"fevr. 24"},{"rank":6,"country":"Belarus","gafi":"—","pthr":"—","sanctions":"Sectoriel mars 22","tax":"—","etnc":"—"},{"rank":7,"country":"Belize","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe II fevr. 24","etnc":"—"},{"rank":8,"country":"Bolivie","gafi":"Liste grise juin 25","pthr":"janv. 26","sanctions":"—","tax":"—","etnc":"—"},{"rank":9,"country":"Brunei","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe II fevr. 25","etnc":"—"},{"rank":10,"country":"Bulgarie","gafi":"Liste grise oct. 23","pthr":"—","sanctions":"—","tax":"—","etnc":"—"},{"rank":11,"country":"Cameroun","gafi":"Liste grise juin 23","pthr":"oct. 23","sanctions":"—","tax":"—","etnc":"—"},{"rank":12,"country":"Centrafrique","gafi":"—","pthr":"—","sanctions":"Embargo dec. 13","tax":"—","etnc":"—"},{"rank":13,"country":"Coree du Nord","gafi":"Liste noire fevr. 11","pthr":"sept. 16","sanctions":"UE + OFAC","tax":"—","etnc":"—"},{"rank":14,"country":"Cote d'Ivoire","gafi":"Liste grise oct. 24","pthr":"aout 25","sanctions":"—","tax":"—","etnc":"—"},{"rank":15,"country":"Cuba","gafi":"—","pthr":"—","sanctions":"OFAC","tax":"—","etnc":"—"},{"rank":16,"country":"Eswatini","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe II oct. 22","etnc":"—"},{"rank":17,"country":"Fidji","gafi":"—","pthr":"—","sanctions":"—","tax":"—","etnc":"janv. 20"},{"rank":18,"country":"Groenland","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe II oct. 25","etnc":"—"},{"rank":19,"country":"Guam","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe I dec. 17","etnc":"janv. 20"},{"rank":20,"country":"Haiti","gafi":"Liste grise juin 21","pthr":"mars 22","sanctions":"Cible dec. 22","tax":"—","etnc":"—"},{"rank":21,"country":"Iran","gafi":"Liste noire oct. 08","pthr":"sept. 16","sanctions":"UE + OFAC","tax":"—","etnc":"—"},{"rank":22,"country":"Jordanie","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe II oct. 25","etnc":"—"},{"rank":23,"country":"Kenya","gafi":"Liste grise fevr. 24","pthr":"aout 25","sanctions":"—","tax":"—","etnc":"—"},{"rank":24,"country":"Koweit","gafi":"Liste grise fevr. 26","pthr":"—","sanctions":"—","tax":"—","etnc":"—"},{"rank":25,"country":"Laos","gafi":"Liste grise fevr. 25","pthr":"aout 25","sanctions":"—","tax":"—","etnc":"—"},{"rank":26,"country":"Liban","gafi":"Liste grise oct. 24","pthr":"aout 25","sanctions":"Cible juil. 20","tax":"—","etnc":"—"},{"rank":27,"country":"Libye","gafi":"—","pthr":"—","sanctions":"Embargo fevr. 11","tax":"—","etnc":"—"},{"rank":28,"country":"Iles Vierges US","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe I mars 18","etnc":"janv. 20"},{"rank":29,"country":"Iles Vierges GB","gafi":"Liste grise juin 25","pthr":"janv. 26","sanctions":"—","tax":"Annexe II oct. 23","etnc":"—"},{"rank":30,"country":"Iles Turques-et-Caicos","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe I fevr. 26","etnc":"fevr. 23"},{"rank":31,"country":"Mali","gafi":"—","pthr":"—","sanctions":"Cible janv. 20","tax":"—","etnc":"—"},{"rank":32,"country":"Maroc","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe II oct. 25","etnc":"—"},{"rank":33,"country":"Monaco","gafi":"Liste grise juin 24","pthr":"aout 25","sanctions":"—","tax":"—","etnc":"—"},{"rank":34,"country":"Montenegro","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe II oct. 25","etnc":"—"},{"rank":35,"country":"Myanmar","gafi":"Liste noire oct. 22","pthr":"oct. 20","sanctions":"UE + OFAC","tax":"—","etnc":"—"},{"rank":36,"country":"Namibie","gafi":"Liste grise fevr. 24","pthr":"aout 25","sanctions":"—","tax":"—","etnc":"—"},{"rank":37,"country":"Nepal","gafi":"Liste grise fevr. 25","pthr":"aout 25","sanctions":"—","tax":"—","etnc":"—"},{"rank":38,"country":"Nicaragua","gafi":"—","pthr":"—","sanctions":"Cible oct. 19","tax":"—","etnc":"—"},{"rank":39,"country":"Palaos","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe I fevr. 20","etnc":"fevr. 21"},{"rank":40,"country":"Panama","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe I fevr. 20","etnc":"avr. 16"},{"rank":41,"country":"Papouasie-Nouvelle-Guinee","gafi":"Liste grise fevr. 26","pthr":"—","sanctions":"—","tax":"—","etnc":"—"},{"rank":42,"country":"Republique democratique du Congo","gafi":"Liste grise oct. 22","pthr":"mars 23","sanctions":"Embargo avr. 03","tax":"—","etnc":"—"},{"rank":43,"country":"Russie","gafi":"Suspendu fevr. 23","pthr":"janv. 26","sanctions":"UE + OFAC","tax":"Annexe I fevr. 23","etnc":"fevr. 24"},{"rank":44,"country":"Samoa","gafi":"—","pthr":"—","sanctions":"—","tax":"—","etnc":"janv. 20"},{"rank":45,"country":"Samoa americaines","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe I dec. 17","etnc":"janv. 20"},{"rank":46,"country":"Seychelles","gafi":"—","pthr":"—","sanctions":"—","tax":"—","etnc":"—"},{"rank":47,"country":"Somalie","gafi":"—","pthr":"—","sanctions":"Embargo dec. 02","tax":"—","etnc":"—"},{"rank":48,"country":"Soudan","gafi":"—","pthr":"—","sanctions":"Embargo mars 94","tax":"—","etnc":"—"},{"rank":49,"country":"Soudan du Sud","gafi":"Liste grise juin 21","pthr":"mars 22","sanctions":"Embargo juil. 14","tax":"—","etnc":"—"},{"rank":50,"country":"Syrie","gafi":"Liste grise fevr. 10","pthr":"sept. 16","sanctions":"UE + OFAC","tax":"—","etnc":"—"},{"rank":51,"country":"Trinite-et-Tobago","gafi":"—","pthr":"mars 18","sanctions":"—","tax":"—","etnc":"janv. 20"},{"rank":52,"country":"Turquie","gafi":"—","pthr":"—","sanctions":"—","tax":"Annexe II dec. 17","etnc":"—"},{"rank":53,"country":"Vanuatu","gafi":"—","pthr":"sept. 16","sanctions":"—","tax":"Annexe I mars 19","etnc":"janv. 20"},{"rank":54,"country":"Venezuela","gafi":"Liste grise juin 24","pthr":"aout 25","sanctions":"UE + OFAC","tax":"—","etnc":"—"},{"rank":55,"country":"Viet Nam","gafi":"Liste grise juin 23","pthr":"oct. 23","sanctions":"—","tax":"Annexe I fevr. 26","etnc":"—"},{"rank":56,"country":"Yemen","gafi":"Liste grise fevr. 10","pthr":"sept. 16","sanctions":"Embargo avr. 15","tax":"—","etnc":"—"},{"rank":57,"country":"Zimbabwe","gafi":"—","pthr":"—","sanctions":"Cible fevr. 02","tax":"—","etnc":"—"}]}
+  </script>
+
+  <script>
+    const state = {
+      dataset: null,
+      countries: [],
+      selectedCountry: null,
+      countryDetailOpen: false,
+      selectedForPdf: new Set(),
+      filters: {
+        query: "",
+        pill: "all",
+        multiOnly: false
+      }
+    };
+
+    const els = {
+      heroEyebrow: document.querySelector("#heroEyebrow"),
+      heroTitle: document.querySelector("#heroTitle"),
+      heroSubtitle: document.querySelector("#heroSubtitle"),
+      sourceList: document.querySelector("#sourceList"),
+      sourceDateGafi: document.querySelector("#sourceDateGafi"),
+      sourceDatePthr: document.querySelector("#sourceDatePthr"),
+      sourceDateSanctions: document.querySelector("#sourceDateSanctions"),
+      sourceDateFiscal: document.querySelector("#sourceDateFiscal"),
+      sourceDateEtnc: document.querySelector("#sourceDateEtnc"),
+      principleOne: document.querySelector("#principleOne"),
+      principleTwo: document.querySelector("#principleTwo"),
+      processList: document.querySelector("#processList"),
+      refreshData: document.querySelector("#refreshData"),
+      refreshPanel: document.querySelector("#refreshPanel"),
+      refreshStatus: document.querySelector("#refreshStatus"),
+      refreshProgress: document.querySelector("#refreshProgress"),
+      toolbarNote: document.querySelector("#toolbarNote"),
+      searchInput: document.querySelector("#searchInput"),
+      filterPills: document.querySelector("#filterPills"),
+      toggleMulti: document.querySelector("#toggleMulti"),
+      selectionStatus: document.querySelector("#selectionStatus"),
+      exportSelectionPdf: document.querySelector("#exportSelectionPdf"),
+      clearSelection: document.querySelector("#clearSelection"),
+      tableBody: document.querySelector("#tableBody"),
+      statsDashboard: document.querySelector("#statsDashboard"),
+      bulkPdfPrint: document.querySelector("#bulkPdfPrint"),
+      countryOverlay: document.querySelector("#countryOverlay"),
+      closeCountryOverlay: document.querySelector("#closeCountryOverlay"),
+      exportCountryPdf: document.querySelector("#exportCountryPdf"),
+      severityPill: document.querySelector("#severityPill"),
+      detailCountry: document.querySelector("#detailCountry"),
+      detailSummary: document.querySelector("#detailSummary"),
+      detailBadges: document.querySelector("#detailBadges"),
+      detailDominant: document.querySelector("#detailDominant"),
+      detailEffect: document.querySelector("#detailEffect"),
+      detailCount: document.querySelector("#detailCount"),
+      detailPosture: document.querySelector("#detailPosture"),
+      detailActions: document.querySelector("#detailActions"),
+      detailSources: document.querySelector("#detailSources")
+    };
+
+    const dateFmt = new Intl.DateTimeFormat("fr-FR", { dateStyle: "medium" });
+    const PILL_LABELS = {
+      all: "Tous",
+      gafi: "GAFI",
+      pthr: "PTHR UE",
+      sanctions: "Sanctions",
+      tax: "Tax UE",
+      etnc: "ETNC FR"
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    function hasValue(value) {
+      return value && value !== "—";
+    }
+
+    function normalize(text) {
+      return String(text || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    }
+
+    function classifyMarker(type, value) {
+      if (!hasValue(value)) return "empty";
+      const lower = normalize(value);
+      if (type === "gafi" && lower.includes("liste noire")) return "black";
+      if (type === "gafi" && lower.includes("suspendu")) return "suspended";
+      if (type === "gafi") return "grey";
+      if (type === "pthr") return "pthr";
+      if (type === "sanctions") return "sanctions";
+      if (type === "tax" && lower.includes("annexe i")) return "tax-i";
+      if (type === "tax") return "tax-ii";
+      if (type === "etnc") return "etnc";
+      return "";
+    }
+
+    function activeLists(country) {
+      return [
+        { key: "gafi", label: "GAFI", value: country.gafi },
+        { key: "pthr", label: "PTHR UE", value: country.pthr },
+        { key: "sanctions", label: "Sanctions", value: country.sanctions },
+        { key: "tax", label: "Tax UE", value: country.tax },
+        { key: "etnc", label: "ETNC FR", value: country.etnc }
+      ].filter((item) => hasValue(item.value));
+    }
+
+    function severityMeta(country) {
+      const lowerGafi = normalize(country.gafi);
+      if (hasValue(country.sanctions) && hasValue(country.pthr)) {
+        return {
+          level: "critical",
+          label: "Critique",
+          dominant: "Sanctions + PTHR UE",
+          effect: "Gel, interdictions et EDD obligatoire",
+          posture: "Escalade immediate"
+        };
+      }
+      if (hasValue(country.sanctions)) {
+        return {
+          level: "critical",
+          label: "Critique",
+          dominant: "Sanctions",
+          effect: "Screening continu et controles bloquants",
+          posture: "Circuit sanctions"
+        };
+      }
+      if (hasValue(country.pthr) || lowerGafi.includes("liste noire")) {
+        return {
+          level: "high",
+          label: "Haute vigilance",
+          dominant: hasValue(country.pthr) ? "PTHR UE" : "GAFI black list",
+          effect: "EDD renforcee sans traitement standard",
+          posture: "Senior management"
+        };
+      }
+      if (hasValue(country.tax) || hasValue(country.etnc) || lowerGafi.includes("liste grise") || lowerGafi.includes("suspendu")) {
+        return {
+          level: "medium",
+          label: "Sous surveillance",
+          dominant: hasValue(country.tax) || hasValue(country.etnc) ? "Fiscal / classification" : "Signal GAFI",
+          effect: "Revision du scoring et tracabilite",
+          posture: "Risk-based renforce"
+        };
+      }
+      return {
+        level: "monitor",
+        label: "Monitor",
+        dominant: "Veille standard",
+        effect: "Pas d'effet direct identifie",
+        posture: "Surveillance simple"
+      };
+    }
+
+    function actionsFor(country) {
+      const actions = [];
+      if (hasValue(country.sanctions)) {
+        actions.push("Verifier le circuit sanctions: screening, gel potentiel, interdictions sectorielles et blocage des flux exposes.");
+      }
+      if (hasValue(country.pthr)) {
+        actions.push("Declencher l'EDD obligatoire: source des fonds, patrimoine, approbation senior management et monitoring renforce.");
+      }
+      if (normalize(country.gafi).includes("liste noire")) {
+        actions.push("Traiter la black list GAFI comme un niveau d'alerte maximal et documenter les contre-mesures retenues.");
+      } else if (normalize(country.gafi).includes("liste grise") || normalize(country.gafi).includes("suspendu")) {
+        actions.push("Rehausser le scoring pays et justifier le niveau de vigilance adopte dans la logique risk-based.");
+      }
+      if (hasValue(country.tax) || hasValue(country.etnc)) {
+        actions.push("Alerter le fiscaliste et reviser la classification LCB-FT: mesures defensives fiscales, DAC6 et vigilance sur les structures opaques.");
+      }
+      if (activeLists(country).length >= 3) {
+        actions.push("Empiler les regimes au lieu de les fusionner: AML, sanctions et fiscalite se pilotent sur des bases juridiques distinctes.");
+      }
+      return actions.length ? actions : ["Aucune mesure immediate en dehors de la veille documentaire et de la revue periodique."];
+    }
+
+    function summaryFor(country) {
+      const lists = activeLists(country);
+      const meta = severityMeta(country);
+      if (!lists.length) {
+        return "Aucune inscription active dans le perimetre charge.";
+      }
+      if (lists.length === 1) {
+        return `Une seule source active: ${lists[0].label}. La lecture doit rester precise sur la base juridique et l'effet operationnel.`;
+      }
+      return `${lists.length} listes actives. ${meta.effect}. La regle d'analyse est d'empiler les obligations sans confondre signal, EDD et impact fiscal.`;
+    }
+
+    function searchHaystack(country) {
+      return normalize([
+        country.country,
+        country.gafi,
+        country.pthr,
+        country.sanctions,
+        country.tax,
+        country.etnc,
+        severityMeta(country).dominant
+      ].join(" "));
+    }
+
+    function filteredCountries() {
+      const query = normalize(state.filters.query);
+      return state.countries.filter((country) => {
+        const listItems = activeLists(country);
+        const queryOk = !query || searchHaystack(country).includes(query);
+        const pillOk = state.filters.pill === "all" || hasValue(country[state.filters.pill]);
+        const multiOk = !state.filters.multiOnly || listItems.length >= 3;
+        return queryOk && pillOk && multiOk;
+      });
+    }
+
+    function markerHtml(type, value) {
+      const cls = classifyMarker(type, value);
+      return `<span class="marker ${cls}">${escapeHtml(value || "—")}</span>`;
+    }
+
+    function renderHero(dataset) {
+      const eyebrow = dataset.hero.eyebrow || "Outil de pilotage";
+      els.heroEyebrow.textContent = eyebrow;
+      els.heroTitle.innerHTML = escapeHtml(dataset.hero.title).replace(" LCB-FT", "<br>LCB-FT");
+      els.heroSubtitle.textContent = dataset.hero.subtitle;
+
+      els.sourceList.innerHTML = Object.entries(dataset.sourceDates).map(([label, date]) => `
+        <div class="source-row">
+          <strong>${escapeHtml(label)}</strong>
+          <span>${escapeHtml(date)}</span>
+        </div>
+      `).join("");
+
+      const sourceDates = dataset.sourceDates || {};
+      els.sourceDateGafi.textContent = `Date source ${sourceDates["GAFI"] || "-"}`;
+      els.sourceDatePthr.textContent = `Date source ${sourceDates["PTHR UE"] || "-"}`;
+      els.sourceDateSanctions.textContent = `Date source ${sourceDates["Sanctions"] || "-"}`;
+      els.sourceDateFiscal.textContent = `Date source ${sourceDates["Fiscal UE"] || "-"}`;
+      els.sourceDateEtnc.textContent = `Date source ${sourceDates["ETNC FR"] || "-"}`;
+
+      els.principleOne.textContent = dataset.guide.principles[0]?.text || "";
+      els.principleTwo.textContent = `${dataset.guide.principles[1]?.text || ""} ${dataset.guide.principles[2]?.text || ""}`.trim();
+      els.processList.innerHTML = (dataset.guide.process || []).map((step) => `<li>${escapeHtml(step)}</li>`).join("");
+    }
+
+    function renderPills() {
+      const keys = Object.keys(PILL_LABELS);
+      els.filterPills.innerHTML = keys.map((key) => `
+        <button class="pill${state.filters.pill === key ? " active" : ""}" type="button" data-pill="${key}">
+          ${escapeHtml(PILL_LABELS[key])}
+        </button>
+      `).join("");
+
+      els.filterPills.querySelectorAll("[data-pill]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.filters.pill = button.dataset.pill;
+          render();
+        });
+      });
+    }
+
+    function renderTableControls(items) {
+      els.toolbarNote.textContent = `${items.length} pays affiches`;
+      els.toggleMulti.classList.toggle("primary", state.filters.multiOnly);
+      els.toggleMulti.textContent = state.filters.multiOnly ? ">= 3 listes active" : ">= 3 listes";
+    }
+
+    function renderSelectionTools() {
+      const count = state.selectedForPdf.size;
+      els.selectionStatus.textContent = `${count.toLocaleString("fr-FR")} pays selectionne${count > 1 ? "s" : ""} pour PDF`;
+      els.exportSelectionPdf.disabled = count === 0;
+      els.clearSelection.disabled = count === 0;
+    }
+
+    function percent(count, total) {
+      if (!total) return "0 %";
+      return `${Math.round((count / total) * 100)} %`;
+    }
+
+    function statMetricHtml(label, value, caption, tone = "") {
+      return `
+        <article class="stat-tile primary ${tone}">
+          <div class="stat-kicker">${escapeHtml(label)}</div>
+          <div class="stat-value">${escapeHtml(value)}</div>
+          <div class="stat-caption">${escapeHtml(caption)}</div>
+        </article>
+      `;
+    }
+
+    function statBarHtml(label, count, total, tone = "") {
+      const ratio = total ? Math.round((count / total) * 100) : 0;
+      return `
+        <div class="stat-bar-row ${tone}">
+          <div class="stat-bar-label">
+            <span>${escapeHtml(label)}</span>
+            <span>${count.toLocaleString("fr-FR")} · ${ratio} %</span>
+          </div>
+          <div class="stat-bar"><span style="--w:${ratio}%"></span></div>
+        </div>
+      `;
+    }
+
+    function renderDescriptiveStats() {
+      const countries = state.countries;
+      const total = countries.length;
+      if (!total) {
+        els.statsDashboard.innerHTML = '<div class="empty-state">Les statistiques apparaitront apres le chargement de la base.</div>';
+        return;
+      }
+
+      const sourceKeys = [
+        ["gafi", "GAFI", ""],
+        ["pthr", "PTHR UE", "red"],
+        ["sanctions", "Sanctions", "orange"],
+        ["tax", "Tax UE", "green"],
+        ["etnc", "ETNC FR", "violet"]
+      ];
+      const counts = Object.fromEntries(sourceKeys.map(([key]) => [key, countries.filter((country) => hasValue(country[key])).length]));
+      const multiCount = countries.filter((country) => activeLists(country).length > 2).length;
+      const noListCount = countries.filter((country) => activeLists(country).length === 0).length;
+      const criticalCount = countries.filter((country) => severityMeta(country).level === "critical").length;
+      const enhancedCount = countries.filter((country) => severityMeta(country).level === "enhanced").length;
+      const monitorCount = countries.filter((country) => severityMeta(country).level === "monitor").length;
+      const gafiBlack = countries.filter((country) => normalize(country.gafi).includes("liste noire")).length;
+      const gafiGrey = countries.filter((country) => hasValue(country.gafi) && normalize(country.gafi).includes("liste grise")).length;
+      const gafiSuspended = countries.filter((country) => normalize(country.gafi).includes("suspendu")).length;
+
+      els.statsDashboard.innerHTML = [
+        statMetricHtml("Pays dans la base", total.toLocaleString("fr-FR"), "Nombre total de lignes du referentiel charge."),
+        statMetricHtml("Exposition GAFI", percent(counts.gafi, total), `${counts.gafi.toLocaleString("fr-FR")} pays avec statut GAFI.`),
+        statMetricHtml("> 2 listes", multiCount.toLocaleString("fr-FR"), `${percent(multiCount, total)} de la base avec empilement fort.`, "orange"),
+        statMetricHtml("Niveau critique", criticalCount.toLocaleString("fr-FR"), `${percent(criticalCount, total)} des pays appellent une escalation.`, "red"),
+        `
+          <article class="stat-tile wide">
+            <div class="stat-kicker">Couverture par source</div>
+            <div class="stat-bars">
+              ${sourceKeys.map(([key, label, tone]) => statBarHtml(label, counts[key], total, tone)).join("")}
+            </div>
+          </article>
+        `,
+        `
+          <article class="stat-tile wide green">
+            <div class="stat-kicker">Repartition des niveaux</div>
+            <div class="stat-bars">
+              ${statBarHtml("Critique", criticalCount, total, "red")}
+              ${statBarHtml("Vigilance renforcee", enhancedCount, total, "orange")}
+              ${statBarHtml("A surveiller", monitorCount, total, "green")}
+              ${statBarHtml("Sans liste active", noListCount, total, "violet")}
+            </div>
+          </article>
+        `,
+        `
+          <article class="stat-tile full violet">
+            <div class="stat-kicker">Lecture GAFI detaillee</div>
+            <div class="summary-grid">
+              <div class="mini"><span>Liste noire</span><strong>${gafiBlack.toLocaleString("fr-FR")} pays</strong></div>
+              <div class="mini"><span>Liste grise</span><strong>${gafiGrey.toLocaleString("fr-FR")} pays</strong></div>
+              <div class="mini"><span>Statut suspendu</span><strong>${gafiSuspended.toLocaleString("fr-FR")} pays</strong></div>
+              <div class="mini"><span>Hors GAFI</span><strong>${(total - counts.gafi).toLocaleString("fr-FR")} pays</strong></div>
+            </div>
+          </article>
+        `
+      ].join("");
+    }
+
+    function renderTable(items) {
+      if (!items.length) {
+        els.tableBody.innerHTML = `<tr><td colspan="8"><div class="empty-state">Aucun pays ne correspond aux filtres actifs.</div></td></tr>`;
+        return;
+      }
+
+      els.tableBody.innerHTML = items.map((country) => {
+        const meta = severityMeta(country);
+        const count = activeLists(country).length;
+        const checked = state.selectedForPdf.has(country.country) ? " checked" : "";
+        return `
+          <tr data-country="${escapeHtml(country.country)}" class="${state.selectedCountry === country.country ? "active" : ""}">
+            <td class="select-col">
+              <input class="row-select" type="checkbox" data-select-country="${escapeHtml(country.country)}" aria-label="Selectionner ${escapeHtml(country.country)} pour export PDF"${checked}>
+            </td>
+            <td class="rank">${country.rank}</td>
+            <td class="country">
+              <strong>${escapeHtml(country.country)}</strong>
+              <span>${escapeHtml(meta.label)} · ${count} liste${count > 1 ? "s" : ""}</span>
+            </td>
+            <td class="list-col">${markerHtml("gafi", country.gafi)}</td>
+            <td class="list-col">${markerHtml("pthr", country.pthr)}</td>
+            <td class="list-col">${markerHtml("sanctions", country.sanctions)}</td>
+            <td class="list-col">${markerHtml("tax", country.tax)}</td>
+            <td class="list-col">${markerHtml("etnc", country.etnc)}</td>
+          </tr>
+        `;
+      }).join("");
+
+      els.tableBody.querySelectorAll("[data-select-country]").forEach((checkbox) => {
+        checkbox.addEventListener("click", (event) => event.stopPropagation());
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            state.selectedForPdf.add(checkbox.dataset.selectCountry);
+          } else {
+            state.selectedForPdf.delete(checkbox.dataset.selectCountry);
+          }
+          renderSelectionTools();
+        });
+      });
+
+      els.tableBody.querySelectorAll("tr[data-country]").forEach((row) => {
+        row.addEventListener("click", () => {
+          state.selectedCountry = row.dataset.country;
+          state.countryDetailOpen = true;
+          render();
+          setCountryOverlay(true);
+        });
+      });
+    }
+
+    function renderDetail(country) {
+      if (!country) {
+        els.severityPill.className = "severity monitor";
+        els.severityPill.textContent = "Monitor";
+        els.detailCountry.textContent = "Selectionner un pays";
+        els.detailSummary.textContent = "Choisissez une ligne pour obtenir la lecture operationnelle.";
+        els.detailBadges.innerHTML = "";
+        els.detailDominant.textContent = "-";
+        els.detailEffect.textContent = "-";
+        els.detailCount.textContent = "-";
+        els.detailPosture.textContent = "-";
+        els.detailActions.innerHTML = "<li>Aucune selection active.</li>";
+        els.detailSources.innerHTML = "<li>Les sources declenchantes apparaitront ici.</li>";
+        return;
+      }
+
+      const meta = severityMeta(country);
+      const lists = activeLists(country);
+      els.severityPill.className = `severity ${meta.level}`;
+      els.severityPill.textContent = meta.label;
+      els.detailCountry.textContent = country.country;
+      els.detailSummary.textContent = summaryFor(country);
+      els.detailDominant.textContent = meta.dominant;
+      els.detailEffect.textContent = meta.effect;
+      els.detailCount.textContent = `${lists.length} regime${lists.length > 1 ? "s" : ""}`;
+      els.detailPosture.textContent = meta.posture;
+
+      els.detailBadges.innerHTML = lists.length
+        ? lists.map((item) => markerHtml(item.key, `${item.label} · ${item.value}`)).join("")
+        : '<span class="marker empty">Aucune liste active</span>';
+
+      els.detailActions.innerHTML = actionsFor(country).map((action) => `<li>${escapeHtml(action)}</li>`).join("");
+      els.detailSources.innerHTML = lists.length
+        ? lists.map((item) => `<li><strong>${escapeHtml(item.label)}</strong> : ${escapeHtml(item.value)}</li>`).join("")
+        : "<li>Pas de source declenchante dans le referentiel charge.</li>";
+    }
+
+    function render() {
+      const items = filteredCountries();
+      if (!items.some((item) => item.country === state.selectedCountry)) {
+        state.selectedCountry = items[0]?.country || null;
+        state.countryDetailOpen = false;
+        setCountryOverlay(false);
+      }
+      renderPills();
+      renderTableControls(items);
+      renderTable(items);
+      renderSelectionTools();
+      renderDescriptiveStats();
+      renderDetail(state.countries.find((item) => item.country === state.selectedCountry) || null);
+    }
+
+    function exportCurrent(type) {
+      const items = filteredCountries();
+      const stamp = new Date().toISOString().slice(0, 10);
+      if (type === "json") {
+        download(`referentiel-pays-${stamp}.json`, JSON.stringify(items, null, 2), "application/json");
+        return;
+      }
+
+      const headers = ["rank", "country", "gafi", "pthr", "sanctions", "tax", "etnc"];
+      const rows = [
+        headers.join(";"),
+        ...items.map((item) => headers.map((key) => `"${String(item[key] ?? "").replace(/"/g, '""')}"`).join(";"))
+      ];
+      download(`referentiel-pays-${stamp}.csv`, rows.join("\n"), "text/csv;charset=utf-8");
+    }
+
+    function setCountryOverlay(open) {
+      state.countryDetailOpen = open;
+      els.countryOverlay.classList.toggle("show", open);
+      els.countryOverlay.setAttribute("aria-hidden", open ? "false" : "true");
+      document.body.style.overflow = open ? "hidden" : "";
+      if (open) els.closeCountryOverlay.focus();
+    }
+
+    function exportCountryPdf() {
+      if (!state.selectedCountry) return;
+      setCountryOverlay(true);
+      document.body.classList.add("print-country-detail");
+      setTimeout(() => window.print(), 80);
+    }
+
+    function selectedCountriesForPdf() {
+      return state.countries.filter((country) => state.selectedForPdf.has(country.country));
+    }
+
+    function countryPrintHtml(country) {
+      const meta = severityMeta(country);
+      const lists = activeLists(country);
+      return `
+        <article class="bulk-print-card">
+          <div class="bulk-print-head">
+            <div>
+              <div class="eyebrow">Fiche pays - Referentiel LCB-FT</div>
+              <h1>${escapeHtml(country.country)}</h1>
+              <p class="sub">${escapeHtml(summaryFor(country))}</p>
+            </div>
+            <span class="severity ${meta.level}">${escapeHtml(meta.label)}</span>
+          </div>
+
+          <div class="bulk-print-grid">
+            <div class="mini"><span>Regime dominant</span><strong>${escapeHtml(meta.dominant)}</strong></div>
+            <div class="mini"><span>Effet prioritaire</span><strong>${escapeHtml(meta.effect)}</strong></div>
+            <div class="mini"><span>Nombre de listes</span><strong>${lists.length} regime${lists.length > 1 ? "s" : ""}</strong></div>
+            <div class="mini"><span>Posture recommandee</span><strong>${escapeHtml(meta.posture)}</strong></div>
+          </div>
+
+          <div class="bulk-print-section">
+            <h3>Sources declenchantes</h3>
+            <ul>${lists.length
+              ? lists.map((item) => `<li><strong>${escapeHtml(item.label)}</strong> : ${escapeHtml(item.value)}</li>`).join("")
+              : "<li>Pas de source declenchante dans le referentiel charge.</li>"}</ul>
+          </div>
+
+          <div class="bulk-print-section">
+            <h3>Actions immediates</h3>
+            <ul>${actionsFor(country).map((action) => `<li>${escapeHtml(action)}</li>`).join("")}</ul>
+          </div>
+        </article>
+      `;
+    }
+
+    function exportSelectedCountriesPdf() {
+      const countries = selectedCountriesForPdf();
+      if (!countries.length) return;
+      els.bulkPdfPrint.innerHTML = countries.map(countryPrintHtml).join("");
+      document.body.classList.add("print-country-selection");
+      setTimeout(() => window.print(), 80);
+    }
+
+    function clearPdfSelection() {
+      state.selectedForPdf.clear();
+      render();
+    }
+
+    function download(filename, content, mime) {
+      const blob = new Blob([content], { type: mime });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+
+    async function loadData(options = {}) {
+      let dataset;
+      try {
+        const response = await fetch("/api/countries");
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        dataset = await response.json();
+      } catch {
+        dataset = JSON.parse(document.querySelector("#fallbackCatalog").textContent);
+      }
+
+      state.dataset = dataset;
+      state.countries = Array.isArray(dataset.countries) ? dataset.countries : [];
+      const countryNames = new Set(state.countries.map((country) => country.country));
+      state.selectedForPdf.forEach((countryName) => {
+        if (!countryNames.has(countryName)) state.selectedForPdf.delete(countryName);
+      });
+      if (!options.keepSelection || !state.countries.some((item) => item.country === state.selectedCountry)) {
+        state.selectedCountry = state.countries[0]?.country || null;
+      }
+      renderHero(dataset);
+      render();
+      if (!options.keepSelection) {
+        els.refreshStatus.textContent = `Derniere actualisation ${new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
+      }
+    }
+
+    async function refreshDataset() {
+      els.refreshData.classList.add("is-loading");
+      els.refreshPanel.classList.remove("is-done");
+      els.refreshPanel.classList.add("is-loading");
+      els.refreshData.textContent = "Actualisation...";
+      els.refreshStatus.textContent = "Synchronisation en cours";
+      try {
+        await new Promise((resolve) => window.setTimeout(resolve, 650));
+        await loadData({ keepSelection: true });
+        els.refreshPanel.classList.remove("is-loading");
+        els.refreshPanel.classList.add("is-done");
+        els.refreshStatus.textContent = `Derniere actualisation ${new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}`;
+      } catch (error) {
+        els.refreshStatus.textContent = "Actualisation impossible";
+      } finally {
+        els.refreshData.classList.remove("is-loading");
+        els.refreshData.textContent = "Actualiser";
+        window.setTimeout(() => {
+          els.refreshPanel.classList.remove("is-loading", "is-done");
+        }, 2600);
+      }
+    }
+
+    els.searchInput.addEventListener("input", (event) => {
+      state.filters.query = event.target.value;
+      render();
+    });
+
+    els.toggleMulti.addEventListener("click", () => {
+      state.filters.multiOnly = !state.filters.multiOnly;
+      render();
+    });
+    els.exportSelectionPdf.addEventListener("click", exportSelectedCountriesPdf);
+    els.clearSelection.addEventListener("click", clearPdfSelection);
+
+    document.querySelector("#exportCsv").addEventListener("click", () => exportCurrent("csv"));
+    document.querySelector("#exportJson").addEventListener("click", () => exportCurrent("json"));
+    els.refreshData.addEventListener("click", refreshDataset);
+    document.querySelector("#navExportCsv").addEventListener("click", (event) => {
+      event.preventDefault();
+      exportCurrent("csv");
+    });
+    document.querySelector("#navExportJson").addEventListener("click", (event) => {
+      event.preventDefault();
+      exportCurrent("json");
+    });
+
+    els.closeCountryOverlay.addEventListener("click", () => setCountryOverlay(false));
+    els.countryOverlay.addEventListener("click", (event) => {
+      if (event.target === els.countryOverlay) setCountryOverlay(false);
+    });
+    els.exportCountryPdf.addEventListener("click", exportCountryPdf);
+    window.addEventListener("afterprint", () => {
+      document.body.classList.remove("print-country-detail");
+      document.body.classList.remove("print-country-selection");
+      els.bulkPdfPrint.innerHTML = "";
+    });
+
+    const intelOverlay = document.querySelector("#intelOverlay");
+    const openIntelOverlay = document.querySelector("#openIntelOverlay");
+    const closeIntelOverlay = document.querySelector("#closeIntelOverlay");
+
+    function setIntelOverlay(open) {
+      intelOverlay.classList.toggle("show", open);
+      intelOverlay.setAttribute("aria-hidden", open ? "false" : "true");
+      document.body.style.overflow = open ? "hidden" : "";
+      if (open) closeIntelOverlay.focus();
+    }
+
+    openIntelOverlay.addEventListener("click", () => setIntelOverlay(true));
+    closeIntelOverlay.addEventListener("click", () => setIntelOverlay(false));
+    intelOverlay.addEventListener("click", (event) => {
+      if (event.target === intelOverlay) setIntelOverlay(false);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && els.countryOverlay.classList.contains("show")) {
+        setCountryOverlay(false);
+        return;
+      }
+      if (event.key === "Escape" && intelOverlay.classList.contains("show")) {
+        setIntelOverlay(false);
+      }
+    });
+
+    loadData().catch((error) => {
+      els.tableBody.innerHTML = `<tr><td colspan="7"><div class="empty-state">Chargement impossible: ${escapeHtml(error.message)}</div></td></tr>`;
+    });
+
+    const navLinks = [...document.querySelectorAll(".nav a[href^='#']")]
+      .filter((link) => link.getAttribute("href") !== "#");
+    const navTargets = navLinks
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => link.classList.remove("active"));
+        const active = navLinks.find((link) => link.getAttribute("href") === `#${entry.target.id}`);
+        if (active) active.classList.add("active");
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+
+    navTargets.forEach((target) => navObserver.observe(target));
+  </script>
+</body>
+</html>

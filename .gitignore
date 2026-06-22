@@ -1,0 +1,5 @@
+_backups/
+
+Référentiel pays/videos/capture-*/
+Référentiel pays/videos/*.webm
+!Référentiel pays/videos/referentiel-pays-demo-20260622T102551.webm
